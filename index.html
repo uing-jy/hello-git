@@ -120,7 +120,7 @@ body{
 .stat small{font-size:10.5px;color:#8b96af;display:block}
 
 /* 中部三列 */
-.mid-row{display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:14px;flex:none;min-height:196px}
+.mid-row{display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:14px;flex:none;min-height:196px;align-items:stretch}
 .mid-row .card{padding:14px 15px}
 .course-list{display:flex;flex-direction:column;gap:0}
 .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:120px;color:#b0bad0;font-size:12px;gap:8px;text-align:center}
@@ -249,6 +249,35 @@ body{
 .btn-cancel{background:#f2f4fa;color:#7a88a8}
 .btn-save{background:linear-gradient(135deg,#5b78f6,#7592ff);color:#fff}
 .btn-save:hover{filter:brightness(1.05)}
+
+/* ===== 课表功能 ===== */
+.course-list{overflow-y:auto;max-height:250px;flex:1}
+.course-list::-webkit-scrollbar{width:4px}
+.course-list::-webkit-scrollbar-thumb{background:#d6def0;border-radius:4px}
+.course-row-main{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.course-row-main .name{width:auto;max-width:118px}
+.course-weeks{font-size:10px;color:#a3adc4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.imp-btn{color:var(--primary);font-size:11.5px;cursor:pointer;font-weight:600;white-space:nowrap}
+.imp-btn:hover{text-decoration:underline}
+.card-head-actions{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.week-board{width:min(1040px,92vw);max-height:88vh;overflow:auto;padding:20px 22px}
+.week-board h3{font-size:18px;margin-bottom:4px}
+.week-board .sub{font-size:11.5px;color:#8b96af;margin-bottom:14px}
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-width:900px}
+.week-day{background:#f7f9ff;border:1px solid var(--border);border-radius:9px;padding:8px;min-height:150px}
+.week-day.today{background:#edf3ff;border:1.5px solid var(--primary)}
+.week-day h4{font-size:12px;text-align:center;margin-bottom:8px;color:#4a5b86;padding-bottom:6px;border-bottom:1.5px dashed #dbe3f5}
+.week-item{background:#fff;border:1px solid #e6ebf7;border-left:3px solid var(--primary);border-radius:6px;padding:6px 7px;margin-bottom:6px;font-size:10.5px;line-height:1.45}
+.week-item b{display:block;font-size:11px;color:#2b3a5b;margin-bottom:2px}
+.week-item span{color:#7a88a8;display:block}
+.week-item em{font-style:normal;color:#9aa5bd;font-size:9.5px;display:block;margin-top:2px}
+
+/* 课程卡片头部防挤压 */
+.mid-row .card:first-child .card-head h3{white-space:nowrap;font-size:13.5px}
+.mid-row .card:first-child .card-head{gap:4px}
+.mid-row .card:first-child .card-head-actions{gap:6px}
+.mid-row .card:first-child .imp-btn{font-size:10.5px}
+.mid-row .card:first-child .more{font-size:10.5px}
 </style>
 </head>
 <body>
@@ -386,7 +415,7 @@ body{
     <!-- 中部 -->
     <div class="mid-row">
       <div class="card">
-        <div class="card-head"><h3><svg class="icon"><use href="#i-book"></use></svg>今日课程 <span id="courseCount" style="font-size:11px;color:#9aa5bd;font-weight:400">（0 节）</span></h3><span id="addCourseBtn" class="more" style="color:var(--primary);cursor:pointer">+ 添加课程 <svg class="icon sm"><use href="#i-chevron"></use></svg></span></div>
+        <div class="card-head"><h3><svg class="icon"><use href="#i-book"></use></svg>今日课程 <span id="courseCount" style="font-size:11px;color:#9aa5bd;font-weight:400">（0 节）</span></h3><span class="card-head-actions"><span class="imp-btn" id="viewWeekBtn">整周课表</span><span class="imp-btn" id="importScheduleBtn">导入课表</span><span id="addCourseBtn" class="more" style="color:var(--primary);cursor:pointer">+ 添加课程 <svg class="icon sm"><use href="#i-chevron"></use></svg></span></span></div>
         <div id="courseList" class="course-list">
         <div class="empty-state"><svg class="icon"><use href="#i-book"></use></svg><span>今天还没有课程</span><small>可以添加你的课程安排</small></div>
         </div>
@@ -463,6 +492,15 @@ body{
 </div>
 
 
+
+<div class="modal-mask" id="weekMask">
+  <div class="modal week-board">
+    <h3 class="hand">我的课表 · 2026 秋</h3>
+    <div class="sub">计算机2026-1班 &nbsp;|&nbsp; 学号 3262050829112 &nbsp;|&nbsp; 上课时间为屏风校区</div>
+    <div class="week-grid" id="weekGrid"></div>
+    <div class="modal-actions"><button class="btn-cancel" id="weekClose">关闭</button></div>
+  </div>
+</div>
 <div class="modal-mask" id="modalMask">
   <div class="modal">
     <h3 id="modalTitle">添加课程</h3>
@@ -477,6 +515,52 @@ body{
 
 <script>
 (function(){
+  // ===== 我的课表（2026 秋 · 计算机2026-1班 · 3262050829112）=====
+  // 字段：name 课程名 / day 星期(1-7) / start-end 节次 / time 时间 / room 教室 / teacher 教师 / weeks 周次
+  var MY_COURSES=[
+    // 高等数学1（上）— 周国强，06105D
+    {name:"高等数学1（上）",day:1,sec:"第1、2节",time:"08:20-10:00",room:"06105D",teacher:"周国强",weeks:"6、8-12、14-18周"},
+    {name:"高等数学1（上）",day:3,sec:"第1、2节",time:"08:20-10:00",room:"06105D",teacher:"周国强",weeks:"6、8、12、14-18周"},
+    {name:"高等数学1（上）",day:4,sec:"第1、2节",time:"08:20-10:00",room:"06105D",teacher:"周国强",weeks:"第11、12、14-18周"},
+    {name:"高等数学1（上）",day:5,sec:"第1、2节",time:"08:20-10:00",room:"06105D",teacher:"周国强",weeks:"5-6、9、12、14-18周"},
+    // 大学英语1 — 周丽
+    {name:"大学英语1",day:2,sec:"第1、2节",time:"08:20-10:00",room:"06308ZH",teacher:"周丽",weeks:"6-15周"},
+    {name:"大学英语1",day:3,sec:"第5、6节",time:"14:30-16:10",room:"04201Y",teacher:"周丽",weeks:"第10周"},
+    {name:"大学英语1",day:4,sec:"第3、4节",time:"10:20-12:00",room:"04324D",teacher:"周丽",weeks:"16-17周"},
+    {name:"大学英语1",day:5,sec:"第3、4节",time:"10:20-12:00",room:"06308ZH",teacher:"周丽",weeks:"5-13单周"},
+    {name:"大学英语1",day:5,sec:"第3、4节",time:"10:20-12:00",room:"04201Y",teacher:"周丽",weeks:"6、10、12、14、15周"},
+    // C语言程序设计 — 陆秋
+    {name:"C语言程序设计",day:2,sec:"第7、8节",time:"16:20-18:00",room:"01410J",teacher:"陆秋",weeks:"6、8-18周（上机）"},
+    {name:"C语言程序设计",day:3,sec:"第1、2节",time:"08:20-10:00",room:"06105D",teacher:"陆秋",weeks:"第5周"},
+    {name:"C语言程序设计",day:3,sec:"第3、4节",time:"10:20-12:00",room:"01410J",teacher:"陆秋",weeks:"第5周（上机）"},
+    {name:"C语言程序设计",day:3,sec:"第5、6节",time:"14:30-16:10",room:"07520D",teacher:"陆秋",weeks:"6、8-18周"},
+    {name:"C语言程序设计",day:3,sec:"第7、8节",time:"16:20-18:00",room:"01410J",teacher:"陆秋",weeks:"6、8-18周（上机）"},
+    {name:"C语言程序设计",day:4,sec:"第3、4节",time:"10:20-12:00",room:"01411D",teacher:"陆秋",weeks:"第9周（上机）"},
+    {name:"C语言程序设计",day:4,sec:"第3、4节",time:"10:20-12:00",room:"04324D",teacher:"陆秋",weeks:"16-17周"},
+    {name:"C语言程序设计",day:4,sec:"第5、6节",time:"14:30-16:10",room:"01410J",teacher:"陆秋",weeks:"16-17周（上机）"},
+    {name:"C语言程序设计",day:4,sec:"第5、6节",time:"14:30-16:10",room:"01410J",teacher:"陆秋",weeks:"第18周（上机）"},
+    // 大学生心理健康教育 — 李萍
+    {name:"大学生心理健康教育",day:1,sec:"第5、6节",time:"14:30-16:10",room:"07520D",teacher:"李萍",weeks:"第8周"},
+    {name:"大学生心理健康教育",day:1,sec:"第5、6节",time:"14:30-16:10",room:"07118D",teacher:"李萍",weeks:"11-18周"},
+    {name:"大学生心理健康教育",day:2,sec:"第1、2节",time:"08:20-10:00",room:"05300D",teacher:"李萍",weeks:"第18周"},
+    {name:"大学生心理健康教育",day:4,sec:"第1、2节",time:"08:20-10:00",room:"05300D",teacher:"李萍",weeks:"第5、6-9、10周"},
+    // 思想道德与法治 — 杨远义
+    {name:"思想道德与法治",day:1,sec:"第7、8节",time:"16:20-18:00",room:"05614D",teacher:"杨远义",weeks:"8-9、11-18周"},
+    {name:"思想道德与法治",day:3,sec:"第7、8节",time:"16:20-18:00",room:"05614D",teacher:"杨远义",weeks:"8-9、11-18周"},
+    // 形势与政策2 — 杨远义
+    {name:"形势与政策2",day:3,sec:"第7、8节",time:"16:20-18:00",room:"05614D",teacher:"杨远义",weeks:"5-6周"},
+    // 体育1 — 修佳伟
+    {name:"体育1",day:4,sec:"第7、8节",time:"16:20-18:00",room:"体育训练馆",teacher:"修佳伟",weeks:"5-6、10、12-14周"},
+    {name:"体育1",day:4,sec:"第7、8节",time:"16:20-18:00",room:"体育训练馆",teacher:"修佳伟",weeks:"16-18周"},
+    // 军事理论 — 刘耀光
+    {name:"军事理论",day:1,sec:"第11、12节",time:"20:10-22:00",room:"06409D",teacher:"刘耀光",weeks:"6-12周"},
+    // 生涯发展与就业指导（上）— 蔡志勇、郑昀
+    {name:"生涯发展与就业指导（上）",day:3,sec:"第3、4节",time:"10:20-12:00",room:"05103D",teacher:"蔡志勇、郑昀",weeks:"12-18周"},
+    {name:"生涯发展与就业指导（上）",day:5,sec:"第3、4节",time:"10:20-12:00",room:"05102D",teacher:"蔡志勇",weeks:"第18周"},
+    // 补课（来自课程清单）
+    {name:"大学英语1（补课）",day:1,sec:"第5、6节",time:"14:30-16:10",room:"04201Y",teacher:"周丽",weeks:"11-09（第10周）补 5-13周课"}
+  ];
+  var KEY_SCH='wb_schedule_v1';
   var toast=document.getElementById('toast'),timer=null;
   function show(msg){
     toast.textContent=msg;toast.classList.add('show');
@@ -492,27 +576,59 @@ body{
   function save(k,v){if(!store){show('当前浏览器不支持本地存储');return}try{store.setItem(k,JSON.stringify(v))}catch(e){show('本地存储写入失败')}}
   function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})}
   var courses=load(KEY_C),todos=load(KEY_T);
+  var schedule=load(KEY_SCH);
+  if(!Array.isArray(schedule)||!schedule.length){schedule=MY_COURSES.slice();save(KEY_SCH,schedule)}
+  var WEEK=['周日','周一','周二','周三','周四','周五','周六'];
+  var todayDay=(new Date().getDay()+6)%7+1; // 1=周一 ... 7=周日
+  function hasSchedule(){return Array.isArray(schedule)&&schedule.length>0}
+  function todayCourses(){return hasSchedule()?schedule.filter(function(c){return c.day===todayDay}):[]}
+  function scheduleRow(c,i){
+    return '<div class="course" title="'+esc(c.teacher)+' · '+esc(c.weeks)+'">'+
+      '<i class="bar"></i><div class="course-row-main"><span class="name">'+esc(c.name)+'</span>'+
+      '<span class="course-weeks">'+esc(c.weeks)+' · '+esc(c.teacher)+'</span></div>'+
+      '<span class="meta">'+esc(c.sec)+' '+esc(c.time)+'</span>'+
+      '<span class="room">'+pinIco()+esc(c.room)+'</span></div>';
+  }
   var emptyCourse='<div class="empty-state"><svg class="icon"><use href="#i-book"></use></svg><span>今天还没有课程</span><small>点击右上角"添加课程"开始安排</small></div>';
   var emptyTodo='<div class="empty-state"><svg class="icon"><use href="#i-check"></use></svg><span>待办已清空</span><small>点击右上角"添加待办"开始规划</small></div>';
 
   function clockIco(){return '<svg class="icon sm"><use href="#i-clock"></use></svg>'}
   function pinIco(){return '<svg class="icon sm"><use href="#i-pin"></use></svg>'}
   function updateCounts(){
-    document.getElementById('statCourse').textContent=courses.length;
+    var total=todayCourses().length+courses.length;
+    document.getElementById('statCourse').textContent=total;
     document.getElementById('statTodo').textContent=todos.length;
-    document.getElementById('courseCount').textContent='（'+courses.length+' 节）';
+    document.getElementById('courseCount').textContent='（'+total+' 节）';
     document.getElementById('todoCount').textContent='（'+todos.length+' 项）';
   }
   function renderCourses(){
     var box=document.getElementById('courseList');
-    if(!courses.length){box.innerHTML=emptyCourse;updateCounts();return}
-    box.innerHTML=courses.map(function(c,i){
+    var tc=todayCourses();
+    var manual=courses.map(function(c,i){
       return '<div class="course"><i class="bar"></i><span class="name" title="'+esc(c.name)+'">'+esc(c.name)+'</span>'+
         '<span class="meta">'+clockIco()+esc(c.time||'--')+'</span>'+
         '<span class="room">'+pinIco()+esc(c.room||'--')+'</span>'+
         '<button class="del-btn" data-type="c" data-i="'+i+'" title="删除">×</button></div>';
-    }).join('');
+    });
+    var rows=tc.map(scheduleRow).concat(manual);
+    if(!rows.length){box.innerHTML=emptyCourse;updateCounts();return}
+    box.innerHTML=rows.join('');
     updateCounts();
+  }
+  function renderWeekBoard(){
+    var grid=document.getElementById('weekGrid');
+    var html='';
+    for(var d=1;d<=7;d++){
+      var items=schedule.filter(function(c){return c.day===d});
+      html+='<div class="week-day'+(d===todayDay?' today':'')+'"><h4>'+WEEK[d]+(d===todayDay?' · 今天':'')+'</h4>';
+      if(!items.length){html+='<div style="font-size:10.5px;color:#b0bad0;text-align:center;padding:18px 0">无课</div>'}
+      items.forEach(function(c){
+        html+='<div class="week-item"><b>'+esc(c.name)+'</b><span>'+esc(c.sec)+' '+esc(c.time)+'</span>'+
+          '<span>'+pinIco()+' '+esc(c.room)+'</span><em>'+esc(c.teacher)+' · '+esc(c.weeks)+'</em></div>';
+      });
+      html+='</div>';
+    }
+    grid.innerHTML=html;
   }
   function renderTodos(){
     var box=document.getElementById('todoList');
@@ -539,6 +655,16 @@ body{
   }
   function closeModal(){mask.classList.remove('show')}
   document.getElementById('addCourseBtn').addEventListener('click',function(){openModal('c')});
+  document.getElementById('importScheduleBtn').addEventListener('click',function(){
+    schedule=MY_COURSES.slice();save(KEY_SCH,schedule);renderCourses();show('课表已导入：'+schedule.length+' 条，今日 '+todayCourses().length+' 节');
+  });
+  var weekMask=document.getElementById('weekMask');
+  document.getElementById('viewWeekBtn').addEventListener('click',function(){
+    if(!hasSchedule()){show('请先点"导入课表"');return}
+    renderWeekBoard();weekMask.classList.add('show');
+  });
+  document.getElementById('weekClose').addEventListener('click',function(){weekMask.classList.remove('show')});
+  weekMask.addEventListener('click',function(e){if(e.target===weekMask)weekMask.classList.remove('show')});
   document.getElementById('addTodoBtn').addEventListener('click',function(){openModal('t')});
   document.getElementById('modalCancel').addEventListener('click',closeModal);
   mask.addEventListener('click',function(e){if(e.target===mask)closeModal()});
