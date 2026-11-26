@@ -5,284 +5,82 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NEXUS // 我的日常工作台</title>
 <style>
-:root{
-  --bg:#070b14;
-  --panel:#0d1424;
-  --panel2:#111a2e;
-  --line:#1c2b47;
-  --cyan:#00e5ff;
-  --pink:#ff2e88;
-  --purple:#a855f7;
-  --lime:#b6ff3c;
-  --amber:#ffb020;
-  --text:#dbe9ff;
-  --dim:#6b82ad;
-}
+:root{--bg:#070b14;--line:#1c2b47;--cyan:#00e5ff;--pink:#ff2e88;--purple:#a855f7;--lime:#b6ff3c;--amber:#ffb020;--text:#dbe9ff;--dim:#6b82ad}
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,"Microsoft YaHei",monospace;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  padding:18px 0;
-  background-image:
-    linear-gradient(rgba(0,229,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,.035) 1px,transparent 1px),
-    radial-gradient(ellipse at 20% 0%,rgba(168,85,247,.12),transparent 55%),
-    radial-gradient(ellipse at 85% 100%,rgba(0,229,255,.10),transparent 55%);
-  background-size:26px 26px,26px 26px,100% 100%,100% 100%;
-  -webkit-font-smoothing:antialiased;
-}
-.icon{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.icon.sm{width:14px;height:14px}
-
-.app{
-  width:1160px;margin:0 auto;min-height:720px;
-  display:flex;position:relative;
-  background:linear-gradient(145deg,rgba(13,20,36,.96),rgba(7,11,20,.98));
-  border:1px solid var(--line);
-  box-shadow:0 0 0 1px rgba(0,229,255,.08),0 0 60px rgba(0,229,255,.10),inset 0 0 80px rgba(0,0,0,.5);
-  clip-path:polygon(0 14px,14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%);
-}
-.app::before{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:20;opacity:.18;
-  background:repeating-linear-gradient(0deg,transparent 0px,transparent 2px,rgba(0,229,255,.07) 3px);
-}
-
-/* ===== 侧边栏 ===== */
-.sidebar{
-  width:168px;flex:none;position:relative;overflow:hidden;
-  background:linear-gradient(180deg,#0a1120,#0c1526 60%,#0a1120);
-  border-right:1px solid var(--line);
-  padding:22px 12px;display:flex;flex-direction:column;
-}
-.sidebar::after{
-  content:"";position:absolute;right:0;top:0;bottom:0;width:1px;
-  background:linear-gradient(180deg,transparent,var(--cyan),transparent);opacity:.5;
-}
-.brand{display:flex;align-items:center;gap:8px;padding:0 4px 26px;font-size:14px;font-weight:800;letter-spacing:1px;color:var(--cyan);text-shadow:0 0 12px rgba(0,229,255,.7)}
-.brand .icon{width:24px;height:24px;filter:drop-shadow(0 0 6px var(--cyan))}
-.brand small{display:block;font-size:8px;color:var(--dim);letter-spacing:2px;font-weight:500}
-.nav{display:flex;flex-direction:column;gap:3px;z-index:1}
-.nav-item{
-  display:flex;align-items:center;gap:10px;padding:10px 12px;
-  font-size:12.5px;letter-spacing:.5px;color:var(--dim);
-  cursor:pointer;user-select:none;position:relative;transition:.16s;
-  border-left:2px solid transparent;
-}
-.nav-item:hover{color:var(--cyan);background:rgba(0,229,255,.06)}
-.nav-item.active{
-  color:#04121a;font-weight:800;
-  background:linear-gradient(90deg,var(--cyan),rgba(0,229,255,.25));
-  border-left:2px solid var(--lime);
-  box-shadow:0 0 18px rgba(0,229,255,.35);
-}
-.nav-item.active::after{content:"▶";margin-left:auto;font-size:9px}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:14px 6px}
-.side-foot{margin-top:auto;font-size:9px;color:var(--dim);line-height:1.8;letter-spacing:.5px;border-top:1px dashed var(--line);padding-top:12px}
-.side-foot b{color:var(--lime);font-weight:600}
-
-/* ===== 主区 ===== */
-.main{flex:1;min-width:0;padding:20px 22px 24px;display:flex;flex-direction:column;gap:13px;z-index:1}
+body{font-family:Consolas,"Microsoft YaHei",monospace;background:var(--bg);color:var(--text);min-height:100vh;padding:18px 0;background-image:linear-gradient(rgba(0,229,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.035) 1px,transparent 1px),radial-gradient(ellipse at 20% 0%,rgba(168,85,247,.12),transparent 55%),radial-gradient(ellipse at 85% 100%,rgba(0,229,255,.10),transparent 55%);background-size:26px 26px,26px 26px,100% 100%,100% 100%}
+.icon{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}.icon.sm{width:14px;height:14px}
+.app{width:1160px;margin:0 auto;min-height:720px;display:flex;position:relative;background:linear-gradient(145deg,rgba(13,20,36,.96),rgba(7,11,20,.98));border:1px solid var(--line);box-shadow:0 0 0 1px rgba(0,229,255,.08),0 0 60px rgba(0,229,255,.10);clip-path:polygon(0 14px,14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
+.app::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:20;opacity:.15;background:repeating-linear-gradient(0deg,transparent 0,transparent 2px,rgba(0,229,255,.07) 3px)}
+.sidebar{width:168px;flex:none;background:linear-gradient(180deg,#0a1120,#0c1526 60%,#0a1120);border-right:1px solid var(--line);padding:22px 12px;display:flex;flex-direction:column;position:relative}
+.sidebar::after{content:"";position:absolute;right:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--cyan),transparent);opacity:.5}
+.brand{display:flex;align-items:center;gap:8px;padding:0 4px 26px;font-size:14px;font-weight:800;letter-spacing:1px;color:var(--cyan);text-shadow:0 0 12px rgba(0,229,255,.7)}.brand small{display:block;font-size:8px;color:var(--dim);letter-spacing:2px;font-weight:500}
+.nav{display:flex;flex-direction:column;gap:3px}.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;border-left:2px solid transparent;transition:.16s}
+.nav-item:hover{color:var(--cyan);background:rgba(0,229,255,.06)}.nav-item.active{color:#04121a;font-weight:800;background:linear-gradient(90deg,var(--cyan),rgba(0,229,255,.25));border-left:2px solid var(--lime);box-shadow:0 0 18px rgba(0,229,255,.35)}
+.nav-item.active::after{content:"▶";margin-left:auto;font-size:9px}.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:14px 6px}
+.side-foot{margin-top:auto;font-size:9px;color:var(--dim);line-height:1.8;border-top:1px dashed var(--line);padding-top:12px}.side-foot b{color:var(--lime)}
+.main{flex:1;min-width:0;padding:20px 22px 24px;display:flex;flex-direction:column;gap:13px;overflow-y:auto;max-height:calc(100vh - 36px)}
 .topbar{display:flex;align-items:center;justify-content:space-between;height:36px;flex:none;border-bottom:1px solid var(--line);padding-bottom:10px}
-.title{font-size:22px;font-weight:800;letter-spacing:3px;color:var(--cyan);text-shadow:0 0 14px rgba(0,229,255,.6);position:relative}
-.title::before{content:"// ";color:var(--pink);text-shadow:0 0 10px var(--pink)}
-.topbar-right{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--dim);letter-spacing:.5px}
-.topbar-right .item{display:flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid var(--line);background:rgba(0,229,255,.03)}
-.status-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.35}}
-.avatar{width:28px;height:28px;border:1px solid var(--cyan);box-shadow:0 0 10px rgba(0,229,255,.4);overflow:hidden;flex:none}
-.avatar svg{width:100%;height:100%}
+.title{font-size:22px;font-weight:800;letter-spacing:3px;color:var(--cyan);text-shadow:0 0 14px rgba(0,229,255,.6)}.title::before{content:"// ";color:var(--pink)}
+.topbar-right{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--dim)}.topbar-right .item{display:flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid var(--line)}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.avatar{width:28px;height:28px;border:1px solid var(--cyan);overflow:hidden;flex:none}.avatar svg{width:100%;height:100%}
+.card{background:linear-gradient(150deg,rgba(17,26,46,.9),rgba(10,16,30,.95));border:1px solid var(--line);position:relative;padding:13px 14px}
+.card::before,.card::after{content:"";position:absolute;width:9px;height:9px}.card::before{top:-1px;left:-1px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan)}.card::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--pink);border-right:2px solid var(--pink)}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;gap:6px}.card-head h3{font-size:13px;font-weight:800;letter-spacing:1px;display:flex;align-items:center;gap:7px;color:var(--cyan);white-space:nowrap}.card-head h3 .icon{color:var(--pink)}
+.head-actions{display:flex;align-items:center;gap:8px}.enter-btn{font-size:9px;color:var(--lime);border:1px solid rgba(182,255,60,.4);padding:2px 6px;cursor:pointer;white-space:nowrap}.enter-btn:hover{background:var(--lime);color:#04121a}
+.imp-btn{font-size:10px;color:var(--lime);cursor:pointer;border-bottom:1px dashed rgba(182,255,60,.5);white-space:nowrap}
+.top-row{display:grid;grid-template-columns:1.3fr 1fr;gap:13px}.profile{height:116px;display:flex;align-items:center;padding:0 22px;gap:16px;background:linear-gradient(115deg,rgba(0,229,255,.10),rgba(168,85,247,.12) 55%,rgba(255,46,136,.10));border:1px solid var(--line)}
+.profile-avatar{width:72px;height:72px;border:2px solid var(--cyan);box-shadow:0 0 18px rgba(0,229,255,.5);overflow:hidden;flex:none}.profile-avatar svg{width:100%;height:100%}
+.profile-info h2{font-size:22px;font-weight:800;letter-spacing:2px;margin-bottom:5px;color:#fff;text-shadow:0 0 12px var(--cyan)}.profile-info p{font-size:11px;color:var(--cyan);margin-bottom:10px}
+.profile-motto{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--lime);border:1px solid rgba(182,255,60,.35);padding:4px 9px}
+.overview{padding:13px 15px}.overview h3{font-size:13px;font-weight:800;margin-bottom:11px;color:var(--pink)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{height:70px;border:1px solid var(--line);padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(0,0,0,.25);cursor:pointer;position:relative}.stat::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:currentColor;box-shadow:0 0 10px currentColor}
+.stat:nth-child(1){color:var(--cyan)}.stat:nth-child(2){color:var(--pink)}.stat:nth-child(3){color:var(--amber)}.stat:nth-child(4){color:var(--purple)}
+.stat b{font-size:20px;line-height:1;font-weight:800;color:#fff;text-shadow:0 0 10px currentColor}.stat b span{font-size:10px}.stat small{font-size:9px;color:var(--dim)}
+.mid-row{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:13px}.mid-row .card{min-height:200px}
+.todo-list,.course-list{display:flex;flex-direction:column;gap:9px;max-height:250px;overflow-y:auto}
+.course{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dashed rgba(0,229,255,.12);font-size:11px}.course .bar{width:3px;height:22px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);flex:none}
+.course-row-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.course-row-main .name{font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.course-weeks{font-size:9px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.course .meta{color:var(--cyan);font-size:9px;white-space:nowrap}.course .room{margin-left:auto;color:var(--dim);font-size:9px;white-space:nowrap;display:flex;gap:3px;align-items:center}
+.todo{display:flex;align-items:center;gap:8px;font-size:11.5px;cursor:pointer}.todo input{appearance:none;width:15px;height:15px;border:1px solid var(--cyan);flex:none;cursor:pointer;position:relative}.todo input:checked{background:var(--pink);border-color:var(--pink)}.todo input:checked::after{content:"✓";position:absolute;left:2px;top:-3px;color:#fff;font-size:13px}.todo span{flex:1;color:#cfe0ff}.todo input:checked+span{color:var(--dim);text-decoration:line-through}
+.tag{font-size:9px;padding:2px 6px;border:1px solid}.tag.today{color:var(--pink);border-color:rgba(255,46,136,.5)}.tag.done{color:var(--lime);border-color:rgba(182,255,60,.5)}
+.del-btn{opacity:0;border:none;background:transparent;color:var(--dim);font-size:16px;cursor:pointer;padding:0 2px}.todo:hover .del-btn,.list-item:hover .del-btn{opacity:1}.del-btn:hover{color:var(--pink)}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100px;color:var(--dim);font-size:11px;gap:6px;text-align:center}
+.ai-card{background:linear-gradient(150deg,rgba(168,85,247,.10),rgba(13,20,36,.95))}.ai-badge{font-size:9px;color:var(--purple);border:1px solid rgba(168,85,247,.4);padding:3px 7px}
+.ai-input{display:flex;gap:7px;background:rgba(0,0,0,.35);border:1px solid var(--line);padding:7px 7px 7px 10px;margin-bottom:9px}.ai-input input{border:none;outline:none;background:transparent;flex:1;font-size:10.5px;color:#cfe0ff;min-width:0;font-family:inherit}.ai-send{width:26px;height:26px;border:1px solid var(--cyan);background:rgba(0,229,255,.12);color:var(--cyan);cursor:pointer;display:grid;place-items:center}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.quick{display:flex;align-items:center;gap:6px;border:1px solid var(--line);padding:8px;font-size:10px;color:var(--dim);cursor:pointer}.quick:hover{border-color:var(--cyan);color:var(--cyan)}
+.bot-row{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;min-height:208px}.bot-row .card{padding:12px 11px;display:flex;flex-direction:column}.bot-row .card-head h3{font-size:11.5px}
+.focus-body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;flex:1}.ring-wrap{position:relative;width:118px;height:118px}.ring-wrap svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.ring-center b{font-size:22px;font-weight:800;color:var(--cyan);text-shadow:0 0 12px var(--cyan)}.ring-center small{font-size:9px;color:var(--dim)}
+.focus-btns{display:flex;gap:6px;width:100%}.btn{border:1px solid var(--line);padding:8px 0;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;flex:1;font-family:inherit}.btn.primary{background:rgba(0,229,255,.12);border-color:var(--cyan);color:var(--cyan)}.btn.ghost{background:rgba(0,0,0,.2);color:var(--dim)}
+.goal-item{margin-bottom:14px}.goal-top{display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px}.goal-top b{color:var(--lime)}.progress{height:8px;border:1px solid var(--line);background:rgba(0,0,0,.4)}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple))}
+.note-card{border:1px solid var(--line);border-left:2px solid var(--purple);padding:9px;margin-bottom:9px;background:rgba(0,0,0,.25)}.note-card h4{font-size:10px;color:var(--purple);margin-bottom:5px}.note-card p{font-size:9px;line-height:1.6;color:var(--dim);white-space:pre-wrap}
+.dl-item{display:flex;align-items:center;gap:7px;padding:8px 0;border-bottom:1px dashed rgba(0,229,255,.12);font-size:10px}.dl-item .doc{width:24px;height:24px;border:1px solid var(--pink);display:grid;place-items:center;color:var(--pink);flex:none}.dl-item .info{flex:1;min-width:0}.dl-item .info b{display:block;color:#fff}.dl-item .info small{color:var(--dim);font-size:9px}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 4px;flex:1;align-content:center}.tool{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:9px;color:var(--dim);cursor:pointer}.tool .circle{width:36px;height:36px;border:1px solid var(--line);display:grid;place-items:center;color:var(--cyan)}.tool:hover{color:var(--cyan)}
 
-/* 卡片 */
-.card{
-  background:linear-gradient(150deg,rgba(17,26,46,.9),rgba(10,16,30,.95));
-  border:1px solid var(--line);position:relative;padding:13px 14px;
-  box-shadow:inset 0 0 30px rgba(0,0,0,.3);
-}
-.card::before,.card::after{content:"";position:absolute;width:9px;height:9px;pointer-events:none}
-.card::before{top:-1px;left:-1px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan)}
-.card::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--pink);border-right:2px solid var(--pink)}
-.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;gap:6px}
-.card-head h3{font-size:13px;font-weight:800;letter-spacing:1px;display:flex;align-items:center;gap:7px;color:var(--cyan);white-space:nowrap;text-shadow:0 0 8px rgba(0,229,255,.4)}
-.card-head h3 .icon{color:var(--pink)}
-.card-head .more{font-size:10px;color:var(--dim);cursor:pointer;letter-spacing:.5px;white-space:nowrap}
-.card-head .more:hover{color:var(--cyan)}
-.head-actions{display:flex;align-items:center;gap:9px;white-space:nowrap}
-.imp-btn{font-size:10px;font-weight:700;color:var(--lime);cursor:pointer;letter-spacing:.5px;border-bottom:1px dashed rgba(182,255,60,.5)}
-.imp-btn:hover{text-shadow:0 0 8px var(--lime)}
-
-/* 上部 */
-.top-row{display:grid;grid-template-columns:1.3fr 1fr;gap:13px;flex:none}
-.profile{
-  height:116px;position:relative;overflow:hidden;display:flex;align-items:center;
-  padding:0 22px;gap:16px;
-  background:linear-gradient(115deg,rgba(0,229,255,.10),rgba(168,85,247,.12) 55%,rgba(255,46,136,.10));
-  border:1px solid var(--line);
-}
-.profile::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent 30px,rgba(0,229,255,.05) 31px);pointer-events:none}
-.profile-avatar{width:72px;height:72px;border:2px solid var(--cyan);box-shadow:0 0 18px rgba(0,229,255,.5),inset 0 0 12px rgba(0,229,255,.2);overflow:hidden;flex:none;position:relative;z-index:1;clip-path:polygon(12% 0,100% 0,100% 88%,88% 100%,0 100%,0 12%)}
-.profile-avatar svg{width:100%;height:100%}
-.profile-info{position:relative;z-index:1}
-.profile-info h2{font-size:22px;font-weight:800;letter-spacing:2px;margin-bottom:5px;color:#fff;text-shadow:0 0 12px var(--cyan),0 0 4px var(--cyan)}
-.profile-info p{font-size:11px;color:var(--cyan);letter-spacing:1px;margin-bottom:10px}
-.profile-motto{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--lime);border:1px solid rgba(182,255,60,.35);padding:4px 9px;background:rgba(182,255,60,.05);letter-spacing:.5px}
-.profile-motto .icon{color:var(--lime)}
-
-.overview{padding:13px 15px;height:116px}
-.overview h3{font-size:13px;font-weight:800;letter-spacing:1px;margin-bottom:11px;color:var(--pink);text-shadow:0 0 8px rgba(255,46,136,.5)}
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.stat{height:70px;border:1px solid var(--line);padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(0,0,0,.25);position:relative;overflow:hidden}
-.stat::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:currentColor;opacity:.8;box-shadow:0 0 10px currentColor}
-.stat:nth-child(1){color:var(--cyan)}
-.stat:nth-child(2){color:var(--pink)}
-.stat:nth-child(3){color:var(--amber)}
-.stat:nth-child(4){color:var(--purple)}
-.stat .icon{width:16px;height:16px}
-.stat b{font-size:20px;line-height:1;font-weight:800;color:#fff;text-shadow:0 0 10px currentColor}
-.stat b span{font-size:10px;font-weight:600;margin-left:2px;color:inherit}
-.stat small{font-size:9.5px;color:var(--dim);letter-spacing:.5px}
-
-/* 中部 */
-.mid-row{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:13px;flex:none;align-items:stretch}
-.mid-row .card{min-height:200px}
-.course-list{display:flex;flex-direction:column;overflow-y:auto;max-height:248px;flex:1}
-.course-list::-webkit-scrollbar{width:4px}
-.course-list::-webkit-scrollbar-thumb{background:var(--cyan);opacity:.5}
-.course{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dashed rgba(0,229,255,.12);font-size:11px}
-.course:last-child{border-bottom:none}
-.course .bar{width:3px;height:22px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);flex:none}
-.course:nth-child(3n+2) .bar{background:var(--pink);box-shadow:0 0 8px var(--pink)}
-.course:nth-child(3n) .bar{background:var(--purple);box-shadow:0 0 8px var(--purple)}
-.course-row-main{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
-.course-row-main .name{font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.course-weeks{font-size:9px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.course .meta{color:var(--cyan);display:flex;align-items:center;gap:3px;font-size:9.5px;white-space:nowrap}
-.course .room{margin-left:auto;color:var(--dim);font-size:9.5px;display:flex;align-items:center;gap:3px;white-space:nowrap}
-
-.todo-list{display:flex;flex-direction:column;gap:9px;overflow-y:auto;max-height:248px;flex:1}
-.todo{display:flex;align-items:center;gap:8px;font-size:11.5px;cursor:pointer}
-.todo input{appearance:none;width:15px;height:15px;border:1px solid var(--cyan);background:rgba(0,229,255,.05);flex:none;cursor:pointer;position:relative}
-.todo input:checked{background:var(--pink);border-color:var(--pink);box-shadow:0 0 10px rgba(255,46,136,.6)}
-.todo input:checked::after{content:"✓";position:absolute;left:2px;top:-3px;color:#fff;font-size:13px;font-weight:800}
-.todo span{flex:1;color:#cfe0ff}
-.todo input:checked + span{color:var(--dim);text-decoration:line-through}
-.tag{font-size:9px;padding:2px 6px;border:1px solid;letter-spacing:.5px;white-space:nowrap}
-.tag.today{color:var(--pink);border-color:rgba(255,46,136,.5);background:rgba(255,46,136,.07)}
-.tag.done{color:var(--lime);border-color:rgba(182,255,60,.5);background:rgba(182,255,60,.07)}
-.del-btn{opacity:0;border:none;background:transparent;color:var(--dim);font-size:16px;cursor:pointer;padding:0 2px;flex:none;transition:.15s}
-.course:hover .del-btn,.todo:hover .del-btn{opacity:1}
-.del-btn:hover{color:var(--pink)}
-.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:110px;color:var(--dim);font-size:11px;gap:7px;text-align:center;letter-spacing:.5px}
-.empty-state svg{width:26px;height:26px;stroke:var(--dim);stroke-width:1.5}
-.empty-state small{font-size:9.5px}
-
-.ai-card{background:linear-gradient(150deg,rgba(168,85,247,.10),rgba(13,20,36,.95))}
-.ai-badge{font-size:9px;color:var(--purple);border:1px solid rgba(168,85,247,.4);padding:3px 7px;letter-spacing:.5px;white-space:nowrap}
-.ai-input{display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.35);border:1px solid var(--line);padding:7px 7px 7px 10px;margin-bottom:9px}
-.ai-input input{border:none;outline:none;background:transparent;flex:1;font-size:10.5px;color:#cfe0ff;min-width:0;font-family:inherit}
-.ai-input input::placeholder{color:var(--dim)}
-.ai-send{width:26px;height:26px;border:1px solid var(--cyan);background:rgba(0,229,255,.12);color:var(--cyan);display:grid;place-items:center;cursor:pointer;flex:none}
-.ai-send:hover{background:var(--cyan);color:#04121a;box-shadow:0 0 12px var(--cyan)}
-.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.quick{display:flex;align-items:center;gap:6px;border:1px solid var(--line);padding:8px 9px;font-size:10.5px;color:var(--dim);cursor:pointer;background:rgba(0,0,0,.2);transition:.16s;letter-spacing:.3px}
-.quick:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:inset 0 0 14px rgba(0,229,255,.1)}
-.quick .icon{color:var(--purple)}
-
-/* 底部 */
-.bot-row{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;flex:1;min-height:208px}
-.bot-row .card{padding:12px 11px;display:flex;flex-direction:column}
-.bot-row .card-head h3{font-size:11.5px}
-
-.focus-body{display:flex;flex-direction:column;align-items:center;flex:1;justify-content:center;gap:10px}
-.ring-wrap{position:relative;width:120px;height:120px}
-.ring-wrap svg{width:100%;height:100%;transform:rotate(-90deg)}
-.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-.ring-center b{font-size:23px;font-weight:800;color:var(--cyan);text-shadow:0 0 12px var(--cyan);letter-spacing:1px}
-.ring-center small{font-size:9px;color:var(--dim);letter-spacing:.5px}
-.focus-btns{display:flex;gap:6px;width:100%}
-.btn{border:1px solid var(--line);border-radius:0;padding:8px 0;font-size:10px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:.16s;flex:1;font-family:inherit;letter-spacing:.5px}
-.btn.primary{background:rgba(0,229,255,.12);border-color:var(--cyan);color:var(--cyan)}
-.btn.primary:hover{background:var(--cyan);color:#04121a;box-shadow:0 0 14px var(--cyan)}
-.btn.ghost{background:rgba(0,0,0,.2);color:var(--dim)}
-.btn.ghost:hover{border-color:var(--pink);color:var(--pink)}
-
-.goal-item{margin-bottom:14px}
-.goal-item:last-child{margin-bottom:0}
-.goal-top{display:flex;align-items:center;gap:5px;font-size:10px;color:#b9cbea;margin-bottom:6px}
-.goal-top .icon{width:13px;height:13px;color:var(--purple)}
-.goal-top b{margin-left:auto;font-size:10px;color:var(--lime)}
-.progress{height:8px;border:1px solid var(--line);background:rgba(0,0,0,.4);overflow:hidden;position:relative}
-.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));box-shadow:0 0 10px var(--cyan)}
-.goal-item:nth-child(3) .progress i{background:linear-gradient(90deg,var(--pink),var(--amber));box-shadow:0 0 10px var(--pink)}
-.goal-item:nth-child(4) .progress i{background:linear-gradient(90deg,var(--lime),var(--cyan));box-shadow:0 0 10px var(--lime)}
-.range{font-size:9px;color:var(--dim);letter-spacing:.5px}
-
-.note-card{border:1px solid var(--line);padding:10px;margin-bottom:10px;background:rgba(0,0,0,.25);position:relative}
-.note-card::before{content:"";position:absolute;left:0;top:0;width:2px;height:100%;background:var(--purple);box-shadow:0 0 8px var(--purple)}
-.note-card.lilac::before{background:var(--pink);box-shadow:0 0 8px var(--pink)}
-.note-card h4{font-size:10.5px;margin-bottom:6px;color:var(--purple);border-bottom:1px dashed var(--line);padding-bottom:4px}
-.note-card.lilac h4{color:var(--pink)}
-.note-card p{font-size:9.5px;line-height:1.65;color:var(--dim);white-space:pre-line}
-
-.dl-sub{font-size:9px;color:var(--dim);margin-bottom:7px;display:block;letter-spacing:.5px}
-.dl-item{display:flex;align-items:center;gap:7px;padding:8px 0;border-bottom:1px dashed rgba(0,229,255,.12);font-size:10.5px}
-.dl-item:last-child{border-bottom:none}
-.dl-item .doc{width:24px;height:24px;border:1px solid var(--pink);display:grid;place-items:center;color:var(--pink);background:rgba(255,46,136,.07);flex:none}
-.dl-item .info{flex:1;min-width:0}
-.dl-item .info b{display:block;font-size:10.5px;color:#cfe0ff;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dl-item .info small{color:var(--dim);font-size:9px}
-.dl-item .left{font-size:9px;color:var(--amber);border:1px solid rgba(255,176,32,.4);padding:2px 5px;white-space:nowrap}
-
-.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 4px;flex:1;align-content:center}
-.tool{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:9.5px;color:var(--dim);cursor:pointer;transition:.16s;letter-spacing:.3px}
-.tool:hover{transform:translateY(-2px);color:var(--cyan);text-shadow:0 0 8px var(--cyan)}
-.tool .circle{width:36px;height:36px;border:1px solid var(--line);display:grid;place-items:center;background:rgba(0,229,255,.04);color:var(--cyan)}
-.tool:nth-child(3n+2) .circle{color:var(--pink);border-color:rgba(255,46,136,.35);background:rgba(255,46,136,.05)}
-.tool:nth-child(3n) .circle{color:var(--purple);border-color:rgba(168,85,247,.35);background:rgba(168,85,247,.05)}
-
-/* 弹窗 */
-.modal-mask{position:fixed;inset:0;background:rgba(3,6,12,.82);display:none;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(3px)}
-.modal-mask.show{display:flex}
-.modal{width:380px;background:linear-gradient(150deg,#101a2e,#090e1a);border:1px solid var(--cyan);box-shadow:0 0 40px rgba(0,229,255,.25);padding:22px 24px}
-.modal h3{font-size:16px;margin-bottom:16px;color:var(--cyan);letter-spacing:1px;text-shadow:0 0 10px rgba(0,229,255,.5)}
-.modal label{display:block;font-size:11px;color:var(--dim);margin-bottom:11px;letter-spacing:.5px}
-.modal label input{display:block;width:100%;margin-top:5px;padding:9px 11px;border:1px solid var(--line);background:rgba(0,0,0,.4);font-size:12px;outline:none;color:#cfe0ff;font-family:inherit}
-.modal label input:focus{border-color:var(--cyan);box-shadow:0 0 10px rgba(0,229,255,.2)}
-.modal-actions{display:flex;gap:9px;justify-content:flex-end;margin-top:18px}
-.modal-actions button{border:1px solid var(--line);padding:8px 17px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.5px}
-.btn-cancel{background:rgba(0,0,0,.3);color:var(--dim)}
-.btn-cancel:hover{border-color:var(--pink);color:var(--pink)}
-.btn-save{background:rgba(0,229,255,.12);border-color:var(--cyan)!important;color:var(--cyan)}
-.btn-save:hover{background:var(--cyan);color:#04121a;box-shadow:0 0 14px var(--cyan)}
-
-.week-board{width:min(1080px,94vw);max-height:88vh;overflow:auto;padding:20px 22px}
-.week-board .sub{font-size:10.5px;color:var(--dim);margin-bottom:14px;letter-spacing:.5px}
-.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;min-width:920px}
-.week-day{background:rgba(0,0,0,.3);border:1px solid var(--line);padding:8px;min-height:150px}
-.week-day.today{border-color:var(--cyan);box-shadow:inset 0 0 20px rgba(0,229,255,.08)}
-.week-day h4{font-size:11px;text-align:center;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed var(--line);color:var(--cyan)}
-.week-day.today h4{color:var(--lime)}
-.week-item{background:rgba(0,229,255,.04);border:1px solid var(--line);border-left:2px solid var(--cyan);padding:6px 7px;margin-bottom:6px;font-size:9.5px;line-height:1.45}
-.week-item b{display:block;font-size:10px;color:#fff;margin-bottom:2px}
-.week-item span{color:var(--dim);display:block}
-.week-item em{font-style:normal;color:var(--purple);font-size:8.5px;display:block;margin-top:2px}
-
-.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:#0d1424;border:1px solid var(--cyan);color:var(--cyan);padding:9px 17px;font-size:11px;letter-spacing:.5px;box-shadow:0 0 22px rgba(0,229,255,.3);opacity:0;pointer-events:none;transition:.25s;z-index:99}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.view{display:none;flex-direction:column;gap:13px}.view.active{display:flex}
+.view-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.view-head h2{font-size:18px;font-weight:800;letter-spacing:2px;color:var(--cyan)}.view-head h2::before{content:"// ";color:var(--pink)}
+.view-actions{display:flex;gap:8px}.action-btn{border:1px solid var(--cyan);background:rgba(0,229,255,.1);color:var(--cyan);padding:7px 13px;font-size:11px;cursor:pointer;font-family:inherit}.action-btn:hover{background:var(--cyan);color:#04121a}.action-btn.danger{border-color:var(--pink);color:var(--pink);background:rgba(255,46,136,.08)}.back-btn{border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--dim);padding:7px 13px;font-size:11px;cursor:pointer;font-family:inherit}.back-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.list{display:flex;flex-direction:column;gap:8px;max-height:calc(100vh - 220px);overflow-y:auto}.list-item{border:1px solid var(--line);background:rgba(0,0,0,.25);padding:12px 14px;display:flex;align-items:flex-start;gap:12px}.list-item:hover{border-color:rgba(0,229,255,.4)}.list-item .idx{font-size:10px;color:var(--purple);min-width:24px}.list-item .body{flex:1;min-width:0}.list-item .body b{display:block;font-size:12px;color:#fff;margin-bottom:4px}.list-item .body p{font-size:10.5px;color:var(--dim);line-height:1.6;white-space:pre-wrap;word-break:break-word}.list-item .body .meta{font-size:9px;color:var(--cyan);margin-top:5px}.done{text-decoration:line-through;opacity:.5}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-grid .full{grid-column:1/-1}.form-grid label{display:block;font-size:10.5px;color:var(--dim)}.form-grid input,.form-grid textarea{display:block;width:100%;margin-top:4px;padding:9px 10px;border:1px solid var(--line);background:rgba(0,0,0,.4);font-size:12px;outline:none;color:#cfe0ff;font-family:inherit}.form-grid input:focus,.form-grid textarea:focus{border-color:var(--cyan)}.form-grid textarea{min-height:90px;resize:vertical}
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;overflow-x:auto}.week-day{background:rgba(0,0,0,.3);border:1px solid var(--line);padding:8px;min-height:180px}.week-day.today{border-color:var(--cyan)}.week-day h4{font-size:11px;text-align:center;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed var(--line);color:var(--cyan)}.week-item{background:rgba(0,229,255,.04);border:1px solid var(--line);border-left:2px solid var(--cyan);padding:6px;margin-bottom:6px;font-size:9px}.week-item b{display:block;font-size:10px;color:#fff;margin-bottom:2px}.week-item span{color:var(--dim);display:block}.week-item em{font-style:normal;color:var(--purple);font-size:8px;display:block;margin-top:2px}
+.big-clock{font-size:64px;font-weight:800;color:var(--cyan);text-shadow:0 0 24px var(--cyan);text-align:center;letter-spacing:4px;padding:24px 0}
+.info-panel{padding:14px;font-size:11px;line-height:1.9;color:var(--dim)}.info-panel .row{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:6px 0}.info-panel .row span:last-child{color:#fff}
+.modal-mask{position:fixed;inset:0;background:rgba(3,6,12,.85);display:none;align-items:center;justify-content:center;z-index:100}.modal-mask.show{display:flex}.modal{width:480px;max-height:88vh;overflow-y:auto;background:linear-gradient(150deg,#101a2e,#090e1a);border:1px solid var(--cyan);box-shadow:0 0 40px rgba(0,229,255,.25);padding:22px 24px}.modal h3{font-size:16px;margin-bottom:16px;color:var(--cyan);letter-spacing:1px}.modal-actions{display:flex;gap:9px;justify-content:flex-end;margin-top:18px}.modal-actions button{border:1px solid var(--line);padding:8px 17px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}.btn-cancel{background:rgba(0,0,0,.3);color:var(--dim)}.btn-save{background:rgba(0,229,255,.12);border-color:var(--cyan)!important;color:var(--cyan)}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:#0d1424;border:1px solid var(--cyan);color:var(--cyan);padding:9px 17px;font-size:11px;opacity:0;pointer-events:none;transition:.25s;z-index:99}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
-
-<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+<svg style="display:none">
   <symbol id="i-grad" viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V15c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/><path d="M22 8v6"/></symbol>
-  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9Z"/><path d="M9 21v-7h6v7"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v9H5V10Z"/><path d="M9 21v-7h6v7"/></symbol>
   <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m8 12 3 3 5-6"/></symbol>
-  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h4"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6"/></symbol>
   <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4L16.5 3.5Z"/></symbol>
   <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></symbol>
-  <symbol id="i-robot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 4h6"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/><path d="M2 12v4M22 12v4"/></symbol>
+  <symbol id="i-robot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 4h6"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 0 1 10 0v1"/><path d="M16 5.5a3 3 0 0 1 0 5.5M18 14a5 5 0 0 1 3 5v1"/></symbol>
   <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 2-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21h-2.8v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1-2-2 .1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H5v-2.8h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 2-2 .1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V5h2.8v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1 2 2-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21v2.8h-.1a1.7 1.7 0 0 0-1.5 1Z"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
@@ -292,155 +90,183 @@ body{
   <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 2h6M19 6l1.5-1.5"/></symbol>
   <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
   <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></symbol>
-  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2Z"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="m7 4 12 8-12 8V4Z"/></symbol>
-  <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8ZM17 9h2a3 3 0 0 1 0 6h-2M6 2v3M10 2v3M14 2v3"/></symbol>
-  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M8 13h8"/></symbol>
   <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"/></symbol>
-  <symbol id="i-disk" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-disk" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/></symbol>
   <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5a3 3 0 0 0-.8-2.3c2.8-.3 5.8-1.4 5.8-6A4.8 4.8 0 0 0 18.3 5 4.5 4.5 0 0 0 18.2 2S17.2 1.7 15 3.2a13 13 0 0 0-7 0C5.8 1.7 4.8 2 4.8 2A4.5 4.5 0 0 0 4.7 5 4.8 4.8 0 0 0 3.3 8.7c0 4.5 3 5.6 5.8 5.9A3 3 0 0 0 8.3 16v4"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z"/></symbol>
-  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C10 4 4 9 4 16a4 4 0 0 0 4 4c7 0 12-6 12-16Z"/><path d="M4 20c3-5 7-8 12-11"/></symbol>
 </svg>
-
 <div class="app">
   <aside class="sidebar">
-    <div class="brand"><svg class="icon"><use href="#i-grad"/></svg><div>NEXUS<small>STUDENT OS v2.6</small></div></div>
-    <nav class="nav">
-      <div class="nav-item active"><svg class="icon"><use href="#i-home"/></svg>主控台</div>
-      <div class="nav-item"><svg class="icon"><use href="#i-calendar"/></svg>课程表</div>
-      <div class="nav-item"><svg class="icon"><use href="#i-check"/></svg>任务队列</div>
-      <div class="nav-item"><svg class="icon"><use href="#i-clipboard"/></svg>作业</div>
-      <div class="nav-item"><svg class="icon"><use href="#i-pen"/></svg>笔记</div>
-      <div class="nav-item"><svg class="icon"><use href="#i-folder"/></svg>数据库</div>
-      <div class="nav-item"><svg class="icon"><use href="#i-robot"/></svg>AI 核心</div>
-      <div class="nav-item"><svg class="icon"><use href="#i-users"/></svg>社群</div>
+    <div class="brand"><svg class="icon"><use href="#i-grad"/></svg><div>NEXUS<small>STUDENT OS v2.7</small></div></div>
+    <nav class="nav" id="nav">
+      <div class="nav-item active" data-view="home"><svg class="icon"><use href="#i-home"/></svg>主控台</div>
+      <div class="nav-item" data-view="schedule"><svg class="icon"><use href="#i-calendar"/></svg>课程表</div>
+      <div class="nav-item" data-view="tasks"><svg class="icon"><use href="#i-check"/></svg>任务队列</div>
+      <div class="nav-item" data-view="homework"><svg class="icon"><use href="#i-clipboard"/></svg>作业</div>
+      <div class="nav-item" data-view="notes"><svg class="icon"><use href="#i-pen"/></svg>笔记</div>
+      <div class="nav-item" data-view="links"><svg class="icon"><use href="#i-folder"/></svg>数据库</div>
+      <div class="nav-item" data-view="ai"><svg class="icon"><use href="#i-robot"/></svg>AI 核心</div>
+      <div class="nav-item" data-view="clubs"><svg class="icon"><use href="#i-users"/></svg>社群</div>
+      <div class="nav-item" data-view="focus"><svg class="icon"><use href="#i-timer"/></svg>专注协议</div>
+      <div class="nav-item" data-view="goals"><svg class="icon"><use href="#i-trend"/></svg>本周目标</div>
       <div class="divider"></div>
-      <div class="nav-item"><svg class="icon"><use href="#i-settings"/></svg>系统设置</div>
+      <div class="nav-item" data-view="settings"><svg class="icon"><use href="#i-settings"/></svg>系统设置</div>
     </nav>
     <div class="side-foot">STATUS <b>ONLINE</b><br>SYNC <b>LOCAL</b><br>GLUT // 2026.09</div>
   </aside>
-
   <main class="main">
     <header class="topbar">
-      <div class="title">我的日常工作台</div>
+      <div class="title" id="pageTitle">我的日常工作台</div>
       <div class="topbar-right">
         <span class="status-dot"></span>
-        <span class="item"><svg class="icon sm"><use href="#i-calendar"/></svg><span id="today">11月25日（周三）</span></span>
+        <span class="item"><svg class="icon sm"><use href="#i-calendar"/></svg><span id="today">11月26日（周四）</span></span>
         <span class="item"><svg class="icon sm" style="color:var(--amber)"><use href="#i-sun"/></svg>多云 12℃~18℃</span>
-        <div class="avatar"><svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#0c1a2c"/><circle cx="20" cy="16" r="8" fill="#f5d6c0"/><path d="M11 15a9 9 0 0 1 18 0c0-7-4-10-9-10s-9 3-9 10Z" fill="#00e5ff"/><path d="M6 40c1-9 7-13 14-13s13 4 14 13" fill="#ff2e88"/><path d="M15 27l5 6 5-6" fill="#b6ff3c"/></svg></div>
+        <div class="avatar"><svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#0c1a2c"/><circle cx="20" cy="16" r="8" fill="#f5d6c0"/><path d="M11 15a9 9 0 0 1 18 0c0-7-4-10-9-10s-9 3-9 10Z" fill="#00e5ff"/><path d="M6 40c1-9 7-13 14-13s13 4 14 13" fill="#ff2e88"/></svg></div>
       </div>
     </header>
 
-    <div class="top-row">
-      <div class="profile">
-        <div class="profile-avatar"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#0d1b30"/><circle cx="40" cy="32" r="15" fill="#f5d8c4"/><path d="M24 31a16 16 0 0 1 32 0c0-13-7-19-16-19s-16 6-16 19Z" fill="#00e5ff"/><path d="M22 30 q-3-14 10-18 q14-6 24 4 q8 7 4 18 q-5-12-18-11 q-13 1-20 7Z" fill="#0b2b3a"/><circle cx="34" cy="33" r="1.2" fill="#04121a"/><circle cx="46" cy="33" r="1.2" fill="#04121a"/><path d="M36 39 q4 3 8 0" stroke="#c98d7d" stroke-width="1.2" fill="none"/><path d="M12 80c2-18 13-26 28-26s26 8 28 26" fill="#a855f7"/><path d="M28 54l12 14 12-14" fill="#b6ff3c"/></svg></div>
-        <div class="profile-info">
-          <h2>新同学</h2>
-          <p>桂林理工大学 // 大一新生 // ID 3262050829112</p>
-          <div class="profile-motto"><svg class="icon sm"><use href="#i-star"/></svg>系统就绪 · 今天也要稳步推进学习和项目</div>
+    <!-- 主控台 -->
+    <div class="view active" id="view-home">
+      <div class="top-row">
+        <div class="profile">
+          <div class="profile-avatar"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#0d1b30"/><circle cx="40" cy="32" r="15" fill="#f5d8c4"/><path d="M24 31a16 16 0 0 1 32 0c0-13-7-19-16-19s-16 6-16 19Z" fill="#00e5ff"/><circle cx="34" cy="33" r="1.2" fill="#04121a"/><circle cx="46" cy="33" r="1.2" fill="#04121a"/><path d="M12 80c2-18 13-26 28-26s26 8 28 26" fill="#a855f7"/><path d="M28 54l12 14 12-14" fill="#b6ff3c"/></svg></div>
+          <div class="profile-info"><h2 id="profileName">新同学</h2><p id="profileMeta">桂林理工大学 // 大一新生 // ID 3262050829112</p><div class="profile-motto"><svg class="icon sm"><use href="#i-star"/></svg><span id="profileMotto">系统就绪 · 今天也要稳步推进学习和项目</span></div></div>
         </div>
-      </div>
-      <div class="card overview">
-        <h3>今日概览 // OVERVIEW</h3>
-        <div class="stat-grid">
-          <div class="stat"><svg class="icon"><use href="#i-book"/></svg><b><span id="statCourse">0</span><span>节</span></b><small>今日课程</small></div>
-          <div class="stat"><svg class="icon"><use href="#i-check"/></svg><b><span id="statTodo">0</span><span>项</span></b><small>今日待办</small></div>
-          <div class="stat"><svg class="icon"><use href="#i-clipboard"/></svg><b>2<span>项</span></b><small>作业截止</small></div>
-          <div class="stat"><svg class="icon"><use href="#i-clock"/></svg><b>2.5<span>h</span></b><small>专注时长</small></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mid-row">
-      <div class="card">
-        <div class="card-head"><h3><svg class="icon"><use href="#i-check"/></svg>任务队列 <span id="todoCount" style="font-size:10px;color:var(--dim);font-weight:400">（0 项）</span></h3><span class="imp-btn" id="addTodoBtn">+ 新建任务</span></div>
-        <div class="todo-list" id="todoList"></div>
-      </div>
-      <div class="card">
-        <div class="card-head"><h3><svg class="icon"><use href="#i-book"/></svg>今日课程 <span id="courseCount" style="font-size:10px;color:var(--dim);font-weight:400">（0 节）</span></h3><div class="head-actions"><span class="imp-btn" id="viewWeekBtn">整周</span><span class="imp-btn" id="importScheduleBtn">导入课表</span></div></div>
-        <div class="course-list" id="courseList"></div>
-      </div>
-      <div class="card ai-card">
-        <div class="card-head"><h3><svg class="icon"><use href="#i-star"/></svg>AI 核心</h3><span class="ai-badge">● ONLINE</span></div>
-        <div class="ai-input"><input id="aiInput" placeholder="输入学习 / 作业 / 代码问题..."><button class="ai-send" id="aiSend" aria-label="发送"><svg class="icon sm"><use href="#i-send"/></svg></button></div>
-        <div class="quick-grid">
-          <div class="quick" data-tip="总结课堂重点"><svg class="icon sm"><use href="#i-file"/></svg>总结课堂重点</div>
-          <div class="quick" data-tip="生成复习计划"><svg class="icon sm"><use href="#i-calendar"/></svg>生成复习计划</div>
-          <div class="quick" data-tip="润色简历"><svg class="icon sm"><use href="#i-users"/></svg>润色简历</div>
-          <div class="quick" data-tip="写代码思路"><svg class="icon sm"><use href="#i-code"/></svg>写代码思路</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bot-row">
-      <div class="card">
-        <div class="card-head"><h3><svg class="icon"><use href="#i-bell"/></svg>截止提醒</h3></div>
-        <span class="dl-sub">DEADLINE // 2 ITEMS</span>
-        <div class="dl-item"><div class="doc"><svg class="icon sm"><use href="#i-file"/></svg></div><div class="info"><b>高等数学作业</b><small>周日至 22:00</small></div><span class="left">2D</span></div>
-        <div class="dl-item"><div class="doc"><svg class="icon sm"><use href="#i-file"/></svg></div><div class="info"><b>社团报名表</b><small>周五 18:00</small></div><span class="left">3D</span></div>
-      </div>
-      <div class="card">
-        <div class="card-head"><h3><svg class="icon"><use href="#i-timer"/></svg>专注协议</h3></div>
-        <div class="focus-body">
-          <div class="ring-wrap">
-            <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="51" fill="none" stroke="#1c2b47" stroke-width="8"/><circle cx="60" cy="60" r="51" fill="none" stroke="#00e5ff" stroke-width="8" stroke-linecap="round" stroke-dasharray="320" stroke-dashoffset="80" style="filter:drop-shadow(0 0 6px #00e5ff)"/></svg>
-            <div class="ring-center"><b id="clockText">25:00</b><small>FOCUS MODE</small></div>
+        <div class="card overview">
+          <h3>今日概览 // OVERVIEW <span class="enter-btn" data-go="settings">数据</span></h3>
+          <div class="stat-grid">
+            <div class="stat" data-go="schedule"><svg class="icon"><use href="#i-book"/></svg><b><span id="statCourse">0</span><span>节</span></b><small>今日课程</small></div>
+            <div class="stat" data-go="tasks"><svg class="icon"><use href="#i-check"/></svg><b><span id="statTodo">0</span><span>项</span></b><small>今日待办</small></div>
+            <div class="stat" data-go="homework"><svg class="icon"><use href="#i-clipboard"/></svg><b><span id="statHw">0</span><span>项</span></b><small>作业截止</small></div>
+            <div class="stat" data-go="focus"><svg class="icon"><use href="#i-clock"/></svg><b><span id="statFocus">0</span><span>h</span></b><small>专注时长</small></div>
           </div>
-          <div class="focus-btns"><button class="btn primary" id="focusBtn"><svg class="icon sm"><use href="#i-play"/></svg>启动</button><button class="btn ghost" id="restBtn">暂停</button></div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-head" style="flex-direction:column;align-items:flex-start;gap:2px"><h3><svg class="icon"><use href="#i-trend"/></svg>本周目标</h3><span class="range">WEEK 11.23 - 11.29</span></div>
-        <div class="goal-item"><div class="goal-top"><svg class="icon"><use href="#i-code"/></svg>C 语言课程作业<b>70%</b></div><div class="progress"><i style="width:70%"></i></div></div>
-        <div class="goal-item"><div class="goal-top"><svg class="icon"><use href="#i-book"/></svg>英语单词 300 个<b>60%</b></div><div class="progress"><i style="width:60%"></i></div></div>
-        <div class="goal-item"><div class="goal-top"><svg class="icon"><use href="#i-trend"/></svg>高数错题 ≥20 题<b>80%</b></div><div class="progress"><i style="width:80%"></i></div></div>
-      </div>
-      <div class="card">
-        <div class="card-head"><h3><svg class="icon"><use href="#i-pen"/></svg>数据日志</h3><span class="imp-btn" id="addNoteBtn">+ 新建</span></div>
-        <div class="note-card"><h4>高等数学 // 讲义重点</h4><p>• 极限、导数、积分的基本联系
-• 微分方程基本概念与解法
-• 易错点：换元积分边界处理</p></div>
-        <div class="note-card lilac"><h4>灵感备忘 // IDEA</h4><p>• 社团活动加打卡机制？
-• 周五前发出学习小组计划</p></div>
-      </div>
-      <div class="card">
-        <div class="card-head"><h3><svg class="icon"><use href="#i-grid"/></svg>常用模块</h3></div>
-        <div class="tools-grid">
-          <div class="tool" data-tip="网盘"><div class="circle"><svg class="icon"><use href="#i-disk"/></svg></div>网盘</div>
-          <div class="tool" data-tip="GitHub"><div class="circle"><svg class="icon"><use href="#i-github"/></svg></div>GitHub</div>
-          <div class="tool" data-tip="教务系统"><div class="circle"><svg class="icon"><use href="#i-grad"/></svg></div>教务</div>
-          <div class="tool" data-tip="邮箱"><div class="circle"><svg class="icon"><use href="#i-mail"/></svg></div>邮箱</div>
-          <div class="tool" data-tip="课程群"><div class="circle"><svg class="icon"><use href="#i-chat"/></svg></div>课程群</div>
-          <div class="tool" data-tip="学习通"><div class="circle"><svg class="icon"><use href="#i-book"/></svg></div>学习通</div>
+      <div class="mid-row">
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon"><use href="#i-check"/></svg>任务队列 <span id="todoCount" style="font-size:10px;color:var(--dim)">（0 项）</span></h3><div class="head-actions"><span class="enter-btn" data-go="tasks">进入</span><span class="imp-btn" data-add="tasks">+ 新建</span></div></div>
+          <div class="todo-list" id="todoList"></div>
         </div>
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon"><use href="#i-book"/></svg>今日课程 <span id="courseCount" style="font-size:10px;color:var(--dim)">（0 节）</span></h3><div class="head-actions"><span class="enter-btn" data-go="schedule">进入</span><span class="imp-btn" id="importHomeBtn">导入课表</span></div></div>
+          <div class="course-list" id="courseList"></div>
+        </div>
+        <div class="card ai-card">
+          <div class="card-head"><h3><svg class="icon"><use href="#i-star"/></svg>AI 核心</h3><div class="head-actions"><span class="enter-btn" data-go="ai">进入</span><span class="ai-badge">● ONLINE</span></div></div>
+          <div class="ai-input"><input id="aiInput" placeholder="输入学习 / 作业 / 代码问题..."><button class="ai-send" id="aiSend"><svg class="icon sm"><use href="#i-send"/></svg></button></div>
+          <div class="quick-grid" id="quickGrid"></div>
+        </div>
+      </div>
+      <div class="bot-row">
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon"><use href="#i-bell"/></svg>截止提醒</h3><span class="enter-btn" data-go="homework">进入</span></div>
+          <div style="font-size:9px;color:var(--dim);margin-bottom:7px">DEADLINE // <span id="dlCount">0</span> ITEMS</div>
+          <div id="deadlineList"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon"><use href="#i-timer"/></svg>专注协议</h3><span class="enter-btn" data-go="focus">进入</span></div>
+          <div class="focus-body">
+            <div class="ring-wrap"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="51" fill="none" stroke="#1c2b47" stroke-width="8"/><circle cx="60" cy="60" r="51" fill="none" stroke="#00e5ff" stroke-width="8" stroke-dasharray="320" stroke-dashoffset="80" style="filter:drop-shadow(0 0 6px #00e5ff)"/></svg><div class="ring-center"><b id="clockText">25:00</b><small>FOCUS MODE</small></div></div>
+            <div class="focus-btns"><button class="btn primary" id="focusBtn"><svg class="icon sm"><use href="#i-play"/></svg>启动</button><button class="btn ghost" id="restBtn">暂停</button></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon"><use href="#i-trend"/></svg>本周目标</h3><span class="enter-btn" data-go="goals">进入</span></div>
+          <div style="font-size:9px;color:var(--dim);margin-bottom:9px">WEEK <span id="weekRange">--</span></div>
+          <div id="goalMini"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon"><use href="#i-pen"/></svg>数据日志</h3><span class="enter-btn" data-go="notes">进入</span></div>
+          <div id="noteMini" style="font-size:9.5px;line-height:1.7;color:var(--dim)"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><svg class="icon"><use href="#i-grid"/></svg>常用模块</h3><span class="enter-btn" data-go="links">进入</span></div>
+          <div class="tools-grid" id="toolGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="view" id="view-schedule">
+      <div class="view-head"><h2>课程表</h2><div class="view-actions"><button class="action-btn" id="importScheduleBtn">重新导入课表</button><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div style="font-size:10px;color:var(--dim)">2026 秋 · 计算机2026-1班 · 学号 3262050829112 · 屏风校区时间 · 共 <b id="schedTotal" style="color:var(--cyan)">0</b> 条</div>
+      <div class="week-grid" id="weekGrid"></div>
+    </div>
+    <div class="view" id="view-tasks">
+      <div class="view-head"><h2>任务队列</h2><div class="view-actions"><button class="action-btn" data-add="tasks">+ 新建任务</button><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div class="list" id="tasksList"></div>
+    </div>
+    <div class="view" id="view-homework">
+      <div class="view-head"><h2>作业</h2><div class="view-actions"><button class="action-btn" data-add="homework">+ 新建作业</button><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div class="list" id="homeworkList"></div>
+    </div>
+    <div class="view" id="view-notes">
+      <div class="view-head"><h2>笔记</h2><div class="view-actions"><button class="action-btn" data-add="notes">+ 新建笔记</button><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div class="list" id="notesList"></div>
+    </div>
+    <div class="view" id="view-links">
+      <div class="view-head"><h2>数据库</h2><div class="view-actions"><button class="action-btn" data-add="links">+ 新建条目</button><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div class="list" id="linksList"></div>
+    </div>
+    <div class="view" id="view-ai">
+      <div class="view-head"><h2>AI 核心</h2><div class="view-actions"><button class="action-btn" data-add="prompts">+ 新建提示词</button><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div style="font-size:10px;color:var(--dim)">本地提示词库 · 点击复制 · 数据仅存本机</div>
+      <div class="list" id="promptsList"></div>
+    </div>
+    <div class="view" id="view-clubs">
+      <div class="view-head"><h2>社群</h2><div class="view-actions"><button class="action-btn" data-add="clubs">+ 新建社群</button><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div class="list" id="clubsList"></div>
+    </div>
+    <div class="view" id="view-focus">
+      <div class="view-head"><h2>专注协议</h2><div class="view-actions"><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:30px">
+        <div class="big-clock" id="bigClock">25:00</div>
+        <div style="display:flex;gap:10px"><button class="action-btn" id="bigStart">开始专注</button><button class="action-btn danger" id="bigReset">重置</button></div>
+        <div style="font-size:11px;color:var(--dim)">本机累计专注 <b id="focusTotal" style="color:var(--lime)">0</b> 分钟 · 完成 <b id="focusSessions" style="color:var(--cyan)">0</b> 次</div>
+      </div>
+    </div>
+    <div class="view" id="view-goals">
+      <div class="view-head"><h2>本周目标</h2><div class="view-actions"><button class="action-btn" data-add="goals">+ 新建目标</button><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div class="list" id="goalsList"></div>
+    </div>
+    <div class="view" id="view-settings">
+      <div class="view-head"><h2>系统设置</h2><div class="view-actions"><button class="back-btn" data-go="home">返回主控台</button></div></div>
+      <div class="card info-panel">
+        <div style="color:var(--cyan);font-weight:800;margin-bottom:10px">// 个人资料</div>
+        <div class="form-grid">
+          <label>姓名<input id="setName" placeholder="你的名字"></label>
+          <label>专业年级<input id="setMajor" placeholder="如：计算机科学与技术 大一"></label>
+          <label class="full">个人宣言<input id="setMotto" placeholder="一句话"></label>
+        </div>
+        <div style="margin-top:12px"><button class="action-btn" id="saveProfile">保存资料</button></div>
+      </div>
+      <div class="card info-panel">
+        <div style="color:var(--cyan);font-weight:800;margin-bottom:10px">// 数据管理</div>
+        <div class="row"><span>任务 / 作业 / 笔记 / 资料 / 提示词 / 社群 / 目标 / 专注记录</span><span>本机浏览器</span></div>
+        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+          <button class="action-btn" id="exportData">导出全部数据 JSON</button>
+          <button class="action-btn" id="importDataBtn">导入数据</button>
+          <button class="action-btn danger" id="clearData">清空所有数据</button>
+        </div>
+        <input type="file" id="importFile" accept="application/json" style="display:none">
+      </div>
+      <div class="card info-panel">
+        <div style="color:var(--cyan);font-weight:800;margin-bottom:10px">// 系统信息</div>
+        <div class="row"><span>版本</span><span>NEXUS STUDENT OS v2.7</span></div>
+        <div class="row"><span>存储</span><span>localStorage（本机）</span></div>
+        <div class="row"><span>同步</span><span>无云端同步</span></div>
       </div>
     </div>
   </main>
 </div>
-
-<div class="modal-mask" id="weekMask">
-  <div class="modal week-board">
-    <h3>// 我的课表 · 2026 秋</h3>
-    <div class="sub">计算机2026-1班 | 学号 3262050829112 | 上课时间为屏风校区</div>
-    <div class="week-grid" id="weekGrid"></div>
-    <div class="modal-actions"><button class="btn-cancel" id="weekClose">关闭</button></div>
-  </div>
-</div>
-<div class="modal-mask" id="modalMask">
-  <div class="modal">
-    <h3 id="modalTitle">// 新建</h3>
-    <div id="modalFields"></div>
-    <div class="modal-actions"><button class="btn-cancel" id="modalCancel">取消</button><button class="btn-save" id="modalSave">保存</button></div>
-  </div>
-</div>
+<div class="modal-mask" id="modalMask"><div class="modal"><h3 id="modalTitle">// 新建</h3><div class="form-grid" id="modalFields"></div><div class="modal-actions"><button class="btn-cancel" id="modalCancel">取消</button><button class="btn-save" id="modalSave">保存</button></div></div></div>
 <div class="toast" id="toast"></div>
-
 <script>
 (function(){
   var MY_COURSES=[
@@ -485,127 +311,183 @@ body{
     {name:"生涯发展与就业指导（上）",day:5,sec:"第3、4节",time:"10:20-12:00",room:"05102D",teacher:"蔡志勇",weeks:"第18周"},
     // 补课（来自课程清单）
     {name:"大学英语1（补课）",day:1,sec:"第5、6节",time:"14:30-16:10",room:"04201Y",teacher:"周丽",weeks:"11-09（第10周）补 5-13周课"}];
-  var KEY_T='cy_todos_v1',KEY_SCH='cy_schedule_v1';
+  var P='nexus_';
   var toast=document.getElementById('toast'),timer=null;
-  function show(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show')},1800)}
+  function show(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show')},2000)}
+  var store=(function(){try{localStorage.setItem('__nx','1');localStorage.removeItem('__nx');return localStorage}catch(e){return null}})();
+  function get(k,def){try{var v=store&&store.getItem(P+k);return v?JSON.parse(v):(def||[])}catch(e){return def||[]}}
+  function set(k,v){try{if(store)store.setItem(P+k,JSON.stringify(v))}catch(e){show('存储失败')}}
+  function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})}
   var d=new Date(),wk=['日','一','二','三','四','五','六'];
   document.getElementById('today').textContent=(d.getMonth()+1)+'月'+d.getDate()+'日（周'+wk[d.getDay()]+'）';
-
-  var store=(function(){try{localStorage.setItem('__cy','1');localStorage.removeItem('__cy');return localStorage}catch(e){return null}})();
-  function load(k){try{var v=JSON.parse((store&&store.getItem(k))||'[]');return Array.isArray(v)?v:[]}catch(e){return[]}}
-  function save(k,v){if(!store){show('浏览器不支持本地存储');return}try{store.setItem(k,JSON.stringify(v))}catch(e){show('存储失败')}}
-  function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]})}
-
-  // 待办：首次写入两条指定任务
-  var todos=load(KEY_T),SEED='cy_seeded_v1';
-  if(!store.getItem(SEED)){
-    todos=[{text:'背诵英语单词',done:false},{text:'高数作业',done:true}];
-    save(KEY_T,todos);store.setItem(SEED,'1');
-  }
-  var schedule=load(KEY_SCH);
-  if(!schedule.length){schedule=MY_COURSES.slice();save(KEY_SCH,schedule)}
-  var WEEK=['周日','周一','周二','周三','周四','周五','周六'];
   var todayDay=(d.getDay()+6)%7+1;
+  var WEEK=['周日','周一','周二','周三','周四','周五','周六'];
+  var DB={};
+  ['tasks','homework','notes','links','prompts','clubs','goals','focus','profile'].forEach(function(k){DB[k]=get(k)});
+  if(!DB.profile||!DB.profile.name)DB.profile={name:'新同学',major:'桂林理工大学 // 大一新生 // ID 3262050829112',motto:'系统就绪 · 今天也要稳步推进学习和项目'};
+  if(!DB.tasks.length){DB.tasks=[{id:1,text:'背诵英语单词',done:false},{id:2,text:'高数作业',done:true}];set('tasks',DB.tasks)}
+  var schedule=get('schedule');if(!schedule.length){schedule=MY_COURSES.slice();set('schedule',schedule)}
+  var MODULES={
+    tasks:{title:'任务',fields:[{k:'text',label:'任务内容',ph:'如：复习高数第三章'}]},
+    homework:{title:'作业',fields:[{k:'title',label:'作业名称',ph:'如：C语言实验报告'},{k:'course',label:'课程',ph:'如：C语言程序设计'},{k:'due',label:'截止时间',ph:'如：周五 18:00'}]},
+    notes:{title:'笔记',fields:[{k:'title',label:'标题',ph:'如：高数讲义重点'},{k:'content',label:'内容',type:'textarea',ph:'记录要点...'}]},
+    links:{title:'资料',fields:[{k:'name',label:'名称',ph:'如：网盘'},{k:'url',label:'链接',ph:'https://...'},{k:'cat',label:'分类',ph:'如：学习工具'}]},
+    prompts:{title:'提示词',fields:[{k:'title',label:'名称',ph:'如：总结课堂重点'},{k:'content',label:'提示词内容',type:'textarea',ph:'输入提示词...'}]},
+    clubs:{title:'社群',fields:[{k:'name',label:'名称',ph:'如：学习小组'},{k:'type',label:'类型',ph:'如：学习/社团'},{k:'contact',label:'联系人/方式',ph:'如：微信群'}]},
+    goals:{title:'目标',fields:[{k:'title',label:'目标',ph:'如：背完英语单词300个'},{k:'percent',label:'进度百分比',ph:'如：60'}]}
+  };
+  function uid(){return Date.now()+Math.floor(Math.random()*1000)}
   function todayCourses(){return schedule.filter(function(c){return c.day===todayDay})}
   function pinIco(){return '<svg class="icon sm"><use href="#i-pin"/></svg>'}
-  function updateCounts(){
+  function renderHome(){
     document.getElementById('statCourse').textContent=todayCourses().length;
-    document.getElementById('statTodo').textContent=todos.length;
+    document.getElementById('statTodo').textContent=DB.tasks.length;
+    document.getElementById('statHw').textContent=DB.homework.filter(function(h){return !h.done}).length;
+    var fm=DB.focus.reduce(function(a,b){return a+(b.minutes||0)},0);
+    document.getElementById('statFocus').textContent=(fm/60).toFixed(1);
+    document.getElementById('todoCount').textContent='（'+DB.tasks.length+' 项）';
     document.getElementById('courseCount').textContent='（'+todayCourses().length+' 节）';
-    document.getElementById('todoCount').textContent='（'+todos.length+' 项）';
-  }
-  function renderCourses(){
-    var box=document.getElementById('courseList'),tc=todayCourses();
-    if(!tc.length){box.innerHTML='<div class="empty-state"><svg class="icon"><use href="#i-book"/></svg><span>今天没有课程</span><small>导入课表后自动按星期显示</small></div>';updateCounts();return}
-    box.innerHTML=tc.map(function(c,i){
-      return '<div class="course" title="'+esc(c.teacher)+' · '+esc(c.weeks)+'"><i class="bar"></i>'+
-        '<div class="course-row-main"><span class="name">'+esc(c.name)+'</span><span class="course-weeks">'+esc(c.weeks)+' · '+esc(c.teacher)+'</span></div>'+
-        '<span class="meta">'+esc(c.sec)+' '+esc(c.time)+'</span><span class="room">'+pinIco()+esc(c.room)+'</span></div>';
-    }).join('');updateCounts();
-  }
-  function renderTodos(){
-    var box=document.getElementById('todoList');
-    if(!todos.length){box.innerHTML='<div class="empty-state"><svg class="icon"><use href="#i-check"/></svg><span>队列为空</span><small>新建任务开始规划</small></div>';updateCounts();return}
-    box.innerHTML=todos.map(function(t,i){
-      return '<div class="todo"><input type="checkbox" data-i="'+i+'"'+(t.done?' checked':'')+'><span>'+esc(t.text)+'</span><i class="tag '+(t.done?'done':'today')+'">'+(t.done?'已完成':'进行中')+'</i><button class="del-btn" data-type="t" data-i="'+i+'" title="删除">×</button></div>';
-    }).join('');updateCounts();
+    var tl=document.getElementById('todoList');
+    tl.innerHTML=DB.tasks.length?DB.tasks.map(function(t,i){
+      return '<div class="todo"><input type="checkbox" data-task="'+i+'"'+(t.done?' checked':'')+'><span>'+esc(t.text)+'</span><i class="tag '+(t.done?'done':'today')+'">'+(t.done?'已完成':'进行中')+'</i><button class="del-btn" data-del="tasks" data-i="'+i+'">×</button></div>';
+    }).join(''):'<div class="empty-state">暂无任务</div>';
+    var cl=document.getElementById('courseList'),tc=todayCourses();
+    cl.innerHTML=tc.length?tc.map(function(c){
+      return '<div class="course"><i class="bar"></i><div class="course-row-main"><span class="name">'+esc(c.name)+'</span><span class="course-weeks">'+esc(c.weeks)+' · '+esc(c.teacher)+'</span></div><span class="meta">'+esc(c.sec)+' '+esc(c.time)+'</span><span class="room">'+pinIco()+esc(c.room)+'</span></div>';
+    }).join(''):'<div class="empty-state">今天没有课程</div>';
+    document.getElementById('quickGrid').innerHTML=DB.prompts.slice(0,4).map(function(p,i){return '<div class="quick" data-copy="'+i+'"><svg class="icon sm"><use href="#i-star"/></svg>'+esc(p.title)+'</div>'}).join('')||'<div class="empty-state" style="font-size:9px">去 AI 核心添加提示词</div>';
+    var dl=document.getElementById('deadlineList'),hw=DB.homework.filter(function(h){return !h.done});
+    document.getElementById('dlCount').textContent=hw.length;
+    dl.innerHTML=hw.slice(0,3).map(function(h){return '<div class="dl-item"><div class="doc"><svg class="icon sm"><use href="#i-file"/></svg></div><div class="info"><b>'+esc(h.title)+'</b><small>'+esc(h.course||'')+' '+esc(h.due||'')+'</small></div></div>'}).join('')||'<div style="font-size:9.5px;color:var(--dim);padding:10px 0">暂无待交作业</div>';
+    var ws=new Date(d);ws.setDate(d.getDate()-(todayDay-1));var we=new Date(ws);we.setDate(ws.getDate()+6);
+    document.getElementById('weekRange').textContent=(ws.getMonth()+1)+'.'+ws.getDate()+' - '+(we.getMonth()+1)+'.'+we.getDate();
+    document.getElementById('goalMini').innerHTML=DB.goals.slice(0,3).map(function(g){return '<div class="goal-item"><div class="goal-top">'+esc(g.title)+'<b>'+(+g.percent||0)+'%</b></div><div class="progress"><i style="width:'+(+g.percent||0)+'%"></i></div></div>'}).join('')||'<div style="font-size:9.5px;color:var(--dim)">暂无目标</div>';
+    document.getElementById('noteMini').innerHTML=DB.notes.slice(0,3).map(function(n){return '<div style="border-left:2px solid var(--purple);padding-left:7px;margin-bottom:8px"><b style="color:var(--purple)">'+esc(n.title)+'</b><br>'+esc((n.content||'').slice(0,40))+'</div>'}).join('')||'<div>暂无笔记</div>';
+    document.getElementById('toolGrid').innerHTML=DB.links.slice(0,6).map(function(l,i){return '<div class="tool" data-open="'+i+'"><div class="circle"><svg class="icon"><use href="#i-disk"/></svg></div>'+esc(l.name)+'</div>'}).join('')||'<div class="empty-state" style="font-size:9px">去数据库添加</div>';
+    document.getElementById('profileName').textContent=DB.profile.name;
+    document.getElementById('profileMeta').textContent=DB.profile.major;
+    document.getElementById('profileMotto').textContent=DB.profile.motto;
+    document.getElementById('focusTotal').textContent=fm;
+    document.getElementById('focusSessions').textContent=DB.focus.length;
   }
   function renderWeek(){
-    var grid=document.getElementById('weekGrid'),html='';
-    for(var day=1;day<=7;day++){
+    document.getElementById('schedTotal').textContent=schedule.length;
+    document.getElementById('weekGrid').innerHTML=WEEK.map(function(name,idx){
+      var day=idx===0?7:idx;
       var items=schedule.filter(function(c){return c.day===day});
-      html+='<div class="week-day'+(day===todayDay?' today':'')+'"><h4>'+WEEK[day]+(day===todayDay?' · TODAY':'')+'</h4>';
-      if(!items.length)html+='<div style="font-size:9px;color:var(--dim);text-align:center;padding:18px 0">NO CLASS</div>';
-      items.forEach(function(c){
-        html+='<div class="week-item"><b>'+esc(c.name)+'</b><span>'+esc(c.sec)+' '+esc(c.time)+'</span><span>'+pinIco()+' '+esc(c.room)+'</span><em>'+esc(c.teacher)+' · '+esc(c.weeks)+'</em></div>';
-      });
-      html+='</div>';
-    }
-    grid.innerHTML=html;
+      var h='<div class="week-day'+(day===todayDay?' today':'')+'"><h4>'+name+(day===todayDay?' · TODAY':'')+'</h4>';
+      h+=items.length?items.map(function(c){return '<div class="week-item"><b>'+esc(c.name)+'</b><span>'+esc(c.sec)+' '+esc(c.time)+'</span><span>'+pinIco()+' '+esc(c.room)+'</span><em>'+esc(c.teacher)+' · '+esc(c.weeks)+'</em></div>'}).join(''):'<div style="font-size:9px;color:var(--dim);text-align:center;padding:18px 0">NO CLASS</div>';
+      return h+'</div>';
+    }).join('');
   }
-  renderCourses();renderTodos();
-
-  var mask=document.getElementById('modalMask'),fields=document.getElementById('modalFields'),mode='';
-  function openModal(m){
-    mode=m;
-    document.getElementById('modalTitle').textContent=m==='t'?'// 新建任务':'// 编辑';
-    fields.innerHTML='<label>任务内容<input id="fText" maxlength="60" placeholder="如：复习高数第三章"></label>';
-    mask.classList.add('show');setTimeout(function(){var el=fields.querySelector('input');if(el)el.focus()},40);
+  function renderList(key){
+    var box=document.getElementById(key+'List');if(!box)return;
+    var arr=DB[key];
+    if(!arr.length){box.innerHTML='<div class="empty-state"><svg class="icon"><use href="#i-folder"/></svg><span>暂无'+MODULES[key].title+'</span><small>点击上方按钮新建</small></div>';return}
+    box.innerHTML=arr.map(function(item,i){
+      var body='';
+      if(key==='tasks')body='<b class="'+(item.done?'done':'')+'">'+esc(item.text)+'</b><div class="meta">'+(item.done?'已完成':'进行中')+'</div>';
+      else if(key==='homework')body='<b class="'+(item.done?'done':'')+'">'+esc(item.title)+'</b><p>'+esc(item.course||'')+' · '+esc(item.due||'')+'</p><div class="meta">'+(item.done?'已完成':'待提交')+'</div>';
+      else if(key==='notes')body='<b>'+esc(item.title)+'</b><p>'+esc(item.content||'')+'</p><div class="meta">'+esc(item.time||'')+'</div>';
+      else if(key==='links')body='<b>'+esc(item.name)+'</b><p>'+esc(item.url||'')+'</p><div class="meta">'+esc(item.cat||'')+'</div>';
+      else if(key==='prompts')body='<b>'+esc(item.title)+'</b><p>'+esc(item.content||'')+'</p><div class="meta">点击复制</div>';
+      else if(key==='clubs')body='<b>'+esc(item.name)+'</b><p>'+esc(item.type||'')+' · '+esc(item.contact||'')+'</p>';
+      else if(key==='goals')body='<b>'+esc(item.title)+'</b><div class="progress" style="margin-top:6px"><i style="width:'+(+item.percent||0)+'%"></i></div><div class="meta">'+(+item.percent||0)+'%</div>';
+      return '<div class="list-item"><span class="idx">'+String(i+1).padStart(2,'0')+'</span><div class="body">'+body+'</div>'+
+        (key==='tasks'||key==='homework'?'<button class="action-btn" data-toggle="'+key+'" data-i="'+i+'" style="padding:4px 9px">'+(item.done?'撤销':'完成')+'</button>':'')+
+        (key==='links'&&item.url?'<button class="action-btn" data-openlink="'+esc(item.url)+'" style="padding:4px 9px">打开</button>':'')+
+        (key==='prompts'?'<button class="action-btn" data-copy="'+i+'" style="padding:4px 9px">复制</button>':'')+
+        '<button class="del-btn" data-del="'+key+'" data-i="'+i+'">×</button></div>';
+    }).join('');
+  }
+  function renderAll(){renderHome();renderWeek();Object.keys(MODULES).forEach(renderList)}
+  function go(view){
+    document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active')});
+    var el=document.getElementById('view-'+view);if(el)el.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(function(n){n.classList.toggle('active',n.getAttribute('data-view')===view)});
+    var titles={home:'我的日常工作台',schedule:'课程表',tasks:'任务队列',homework:'作业',notes:'笔记',links:'数据库',ai:'AI 核心',clubs:'社群',focus:'专注协议',goals:'本周目标',settings:'系统设置'};
+    document.getElementById('pageTitle').textContent=titles[view]||'工作台';
+    document.querySelector('.main').scrollTop=0;
+    if(view==='settings'){document.getElementById('setName').value=DB.profile.name||'';document.getElementById('setMajor').value=DB.profile.major||'';document.getElementById('setMotto').value=DB.profile.motto||''}
+  }
+  document.getElementById('nav').addEventListener('click',function(e){var n=e.target.closest('.nav-item');if(n)go(n.getAttribute('data-view'))});
+  document.addEventListener('click',function(e){
+    var g=e.target.closest('[data-go]');if(g){go(g.getAttribute('data-go'));return}
+    var a=e.target.closest('[data-add]');if(a){openModal(a.getAttribute('data-add'));return}
+  });
+  var mask=document.getElementById('modalMask'),fields=document.getElementById('modalFields'),curKey=null;
+  function openModal(key){
+    curKey=key;var m=MODULES[key];if(!m)return;
+    document.getElementById('modalTitle').textContent='// 新建'+m.title;
+    fields.innerHTML=m.fields.map(function(f){return '<label class="'+(f.type==='textarea'?'full':'')+'">'+f.label+(f.type==='textarea'?'<textarea id="mf_'+f.k+'" placeholder="'+(f.ph||'')+'"></textarea>':'<input id="mf_'+f.k+'" placeholder="'+(f.ph||'')+'">')+'</label>'}).join('');
+    mask.classList.add('show');setTimeout(function(){var el=fields.querySelector('input,textarea');if(el)el.focus()},40);
   }
   function closeModal(){mask.classList.remove('show')}
-  document.getElementById('addTodoBtn').addEventListener('click',function(){openModal('t')});
-  var weekMask=document.getElementById('weekMask');
-  document.getElementById('importScheduleBtn').addEventListener('click',function(){schedule=MY_COURSES.slice();save(KEY_SCH,schedule);renderCourses();show('课表已载入：'+schedule.length+' 条')});
-  document.getElementById('viewWeekBtn').addEventListener('click',function(){renderWeek();weekMask.classList.add('show')});
-  document.getElementById('weekClose').addEventListener('click',function(){weekMask.classList.remove('show')});
-  weekMask.addEventListener('click',function(e){if(e.target===weekMask)weekMask.classList.remove('show')});
   document.getElementById('modalCancel').addEventListener('click',closeModal);
   mask.addEventListener('click',function(e){if(e.target===mask)closeModal()});
   document.getElementById('modalSave').addEventListener('click',function(){
-    var t=document.getElementById('fText').value.trim();if(!t){show('请输入任务内容');return}
-    todos.push({text:t,done:false});save(KEY_T,todos);renderTodos();closeModal();show('任务已添加');
+    if(!curKey)return;var obj={id:uid()};
+    MODULES[curKey].fields.forEach(function(f){var el=document.getElementById('mf_'+f.k);obj[f.k]=el?el.value.trim():''});
+    var req={tasks:'text',homework:'title',notes:'title',links:'name',prompts:'title',clubs:'name',goals:'title'};
+    if(req[curKey]&&!obj[req[curKey]]){show('请填写'+MODULES[curKey].title+'内容');return}
+    if(curKey==='notes')obj.time=new Date().toLocaleString('zh-CN');
+    if(curKey==='homework'||curKey==='tasks')obj.done=false;
+    DB[curKey].push(obj);set(curKey,DB[curKey]);renderAll();closeModal();show(MODULES[curKey].title+'已添加');
   });
-  document.addEventListener('keydown',function(e){
-    if(!mask.classList.contains('show'))return;
-    if(e.key==='Enter')document.getElementById('modalSave').click();
-    if(e.key==='Escape')closeModal();
-  });
+  document.addEventListener('keydown',function(e){if(mask.classList.contains('show')&&e.key==='Escape')closeModal()});
   document.addEventListener('click',function(e){
-    var b=e.target.closest('.del-btn');if(!b)return;
-    todos.splice(parseInt(b.getAttribute('data-i'),10),1);save(KEY_T,todos);renderTodos();show('任务已删除');
+    var b=e.target.closest('[data-del]');if(b){var k=b.getAttribute('data-del'),i=+b.getAttribute('data-i');DB[k].splice(i,1);set(k,DB[k]);renderAll();show('已删除');return}
+    var t=e.target.closest('[data-toggle]');if(t){var k2=t.getAttribute('data-toggle'),i2=+t.getAttribute('data-i');DB[k2][i2].done=!DB[k2][i2].done;set(k2,DB[k2]);renderAll();return}
+    var c=e.target.closest('[data-copy]');if(c){var i3=+c.getAttribute('data-copy'),txt=DB.prompts[i3]?DB.prompts[i3].content:'';if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){show('已复制')});else show('请手动复制');return}
+    var o=e.target.closest('[data-openlink]');if(o){window.open(o.getAttribute('data-openlink'),'_blank');return}
+    var op=e.target.closest('[data-open]');if(op){var l=DB.links[+op.getAttribute('data-open')];if(l&&l.url)window.open(l.url,'_blank');else show('未填写链接');return}
   });
   document.getElementById('todoList').addEventListener('change',function(e){
-    if(e.target.tagName!=='INPUT')return;
-    var i=parseInt(e.target.getAttribute('data-i'),10);if(!todos[i])return;
-    todos[i].done=e.target.checked;save(KEY_T,todos);renderTodos();
+    var cb=e.target.closest('[data-task]');if(!cb)return;var i=+cb.getAttribute('data-task');DB.tasks[i].done=cb.checked;set('tasks',DB.tasks);renderAll();
   });
-  document.getElementById('todoList').addEventListener('click',function(e){
-    if(e.target.tagName==='INPUT'||e.target.classList.contains('del-btn'))return;
-    var row=e.target.closest('.todo');if(!row)return;
-    var cb=row.querySelector('input');if(!cb)return;
-    cb.checked=!cb.checked;cb.dispatchEvent(new Event('change',{bubbles:true}));
+  function importSched(){schedule=MY_COURSES.slice();set('schedule',schedule);renderAll();show('课表已载入 '+schedule.length+' 条')}
+  document.getElementById('importScheduleBtn').addEventListener('click',importSched);
+  document.getElementById('importHomeBtn').addEventListener('click',importSched);
+  var aiInput=document.getElementById('aiInput');
+  function askAI(){var v=aiInput.value.trim();if(!v){show('请输入问题');return}
+    var hit=DB.prompts.filter(function(p){return p.title&&v.indexOf(p.title)>=0})[0];
+    show(hit?'已找到提示词「'+hit.title+'」，请在 AI 核心复制':'问题已存入笔记，请到 AI 核心添加提示词');
+    if(!hit){DB.notes.push({id:uid(),title:'AI 提问',content:v,time:new Date().toLocaleString('zh-CN')});set('notes',DB.notes);renderAll()}
+    aiInput.value='';
+  }
+  document.getElementById('aiSend').addEventListener('click',askAI);
+  aiInput.addEventListener('keydown',function(e){if(e.key==='Enter')askAI()});
+  var running=false,left=1500,tick=null;
+  function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+  function syncClock(){document.getElementById('clockText').textContent=fmt(left);document.getElementById('bigClock').textContent=fmt(left)}
+  function startFocus(){if(running)return;running=true;document.getElementById('focusBtn').innerHTML='<svg class="icon sm"><use href="#i-play"/></svg>暂停';document.getElementById('bigStart').textContent='暂停专注';
+    tick=setInterval(function(){if(left>0){left--;syncClock()}else{clearInterval(tick);running=false;DB.focus.push({date:new Date().toLocaleDateString('zh-CN'),minutes:25});set('focus',DB.focus);left=1500;syncClock();renderAll();show('专注完成，已记录 25 分钟')}},1000);show('专注协议启动')}
+  function stopFocus(){if(!running)return;clearInterval(tick);running=false;document.getElementById('focusBtn').innerHTML='<svg class="icon sm"><use href="#i-play"/></svg>启动';document.getElementById('bigStart').textContent='开始专注';show('已暂停')}
+  document.getElementById('focusBtn').addEventListener('click',function(){if(running)stopFocus();else startFocus()});
+  document.getElementById('restBtn').addEventListener('click',stopFocus);
+  document.getElementById('bigStart').addEventListener('click',function(){if(running)stopFocus();else startFocus()});
+  document.getElementById('bigReset').addEventListener('click',function(){stopFocus();left=1500;syncClock();show('已重置')});
+  document.getElementById('saveProfile').addEventListener('click',function(){
+    DB.profile={name:document.getElementById('setName').value.trim()||'新同学',major:document.getElementById('setMajor').value.trim(),motto:document.getElementById('setMotto').value.trim()};
+    set('profile',DB.profile);renderHome();show('资料已保存');
   });
-
-  document.querySelectorAll('.nav-item').forEach(function(n){
-    n.addEventListener('click',function(){
-      document.querySelectorAll('.nav-item').forEach(function(x){x.classList.remove('active')});
-      n.classList.add('active');
-      if(n.textContent.trim()!=='主控台')show('演示模式：'+n.textContent.trim()+'模块未接入');
-    });
+  document.getElementById('exportData').addEventListener('click',function(){
+    var data={exportAt:new Date().toISOString()};Object.keys(DB).forEach(function(k){data[k]=DB[k]});data.schedule=schedule;
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download='nexus-workbench-data.json';a.click();show('已导出');
   });
-  function ask(){var v=document.getElementById('aiInput');show(v.value.trim()?'演示模式：AI 核心未接入':'请输入你的问题');v.value=''}
-  document.getElementById('aiSend').addEventListener('click',ask);
-  document.getElementById('aiInput').addEventListener('keydown',function(e){if(e.key==='Enter')ask()});
-  document.querySelectorAll('.quick').forEach(function(q){q.addEventListener('click',function(){show('演示模式：'+q.dataset.tip+'未接入')})});
-  document.getElementById('addNoteBtn').addEventListener('click',function(){show('演示模式：笔记编辑未接入')});
-  var running=false,left=1500,tick=null,clock=document.getElementById('clockText'),btn=document.getElementById('focusBtn');
-  function renderClock(){clock.textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0')}
-  btn.addEventListener('click',function(){
-    if(running){clearInterval(tick);running=false;btn.innerHTML='<svg class="icon sm"><use href="#i-play"/></svg>启动';show('专注暂停')}
-    else{running=true;btn.innerHTML='<svg class="icon sm"><use href="#i-check"/></svg>暂停中';tick=setInterval(function(){if(left>0){left--;renderClock()}else{clearInterval(tick);running=false;show('专注完成')}},1000);show('专注协议启动')}
+  document.getElementById('importDataBtn').addEventListener('click',function(){document.getElementById('importFile').click()});
+  document.getElementById('importFile').addEventListener('change',function(e){
+    var f=e.target.files[0];if(!f)return;var r=new FileReader();
+    r.onload=function(){try{var data=JSON.parse(r.result);Object.keys(DB).forEach(function(k){if(data[k]){DB[k]=data[k];set(k,DB[k])}});if(data.schedule){schedule=data.schedule;set('schedule',schedule)}renderAll();show('数据已导入')}catch(err){show('文件格式错误')}};
+    r.readAsText(f);
   });
-  document.getElementById('restBtn').addEventListener('click',function(){show('演示模式：休息计时未接入')});
-  document.querySelectorAll('.tool').forEach(function(el){el.addEventListener('click',function(){show('演示模式：'+(el.dataset.tip||el.textContent.trim())+'未接入')})});
+  document.getElementById('clearData').addEventListener('click',function(){
+    if(!confirm('确定清空所有本地数据？此操作不可撤销。'))return;
+    ['tasks','homework','notes','links','prompts','clubs','goals','focus','profile','schedule'].forEach(function(k){try{store.removeItem(P+k)}catch(e){}});
+    location.reload();
+  });
+  renderAll();syncClock();
 })();
 </script>
 </body>
